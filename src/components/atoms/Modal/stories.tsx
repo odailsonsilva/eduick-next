@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react/types-6-0'
 import useState from 'storybook-addon-state'
 
-import { Button } from 'components/Button'
+import { Button } from 'components/atoms/Button'
 import Modal from '.'
 
 export default {
