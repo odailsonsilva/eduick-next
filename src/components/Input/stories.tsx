@@ -17,3 +17,13 @@ withLabel.parameters = {
     default: 'dark'
   }
 }
+
+export const withPassword: Story<InputProps> = (args) => <Input {...args} />
+withPassword.args = {
+  isPassword: true
+}
+withLabel.parameters = {
+  backgrounds: {
+    default: 'dark'
+  }
+}

@@ -1,4 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components'
+import { transparentize } from 'polished'
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -19,7 +20,36 @@ const GlobalStyles = createGlobalStyle`
       font-family: ${theme.font.family};
       font-size: ${theme.font.sizes.medium};
     }
+
+    .react-modal-overlay {
+      background: ${transparentize(0.2, theme.colors.purple[900])};
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+    .react-modal-content {
+      background: #fff;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.16);
+      border-radius: 4px;
+      padding: 4rem;
+      outline: none;
+
+      margin: 0 1.6rem;
+
+      position: relative;
+
+      background: ${theme.colors.purple[500]};
+      width: 52.5rem;
+    }
   `}
+
+
 `
 
 export default GlobalStyles
