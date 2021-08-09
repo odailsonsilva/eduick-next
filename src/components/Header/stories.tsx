@@ -14,3 +14,8 @@ const linksHeader = [
 export const Basic: Story<HeaderProps> = (args) => (
   <Header links={linksHeader} buttonText="Get Started" />
 )
+Basic.parameters = {
+  backgrounds: {
+    default: 'dark'
+  }
+}

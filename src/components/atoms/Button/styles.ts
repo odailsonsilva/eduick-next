@@ -18,6 +18,8 @@ export const Wrapper = styled.button<Pick<ButtonProps, 'themeButton'>>`
     align-items: center;
     justify-content: center;
 
+    min-height: 4.8rem;
+
     font-size: 1.4rem;
     font-weight: bold;
 
