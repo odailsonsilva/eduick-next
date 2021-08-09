@@ -1,5 +1,5 @@
-import Main from 'components/Main'
+import { LandingPage } from 'templates/LandingPage'
 
 export default function Home() {
-  return <Main />
+  return <LandingPage />
 }
