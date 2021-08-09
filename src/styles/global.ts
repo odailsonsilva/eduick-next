@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline: none;
     -webkit-font-smoothing: antialiased;
     -webkit-osx-font-smoothing: grayscale;
   }

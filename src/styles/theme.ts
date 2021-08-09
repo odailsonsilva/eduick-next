@@ -2,8 +2,10 @@ export default {
   colors: {
     purple: {
       '100': '#CFC9E9',
+      '300': ' #A68EEF',
       '500': '#6A40E4',
       '600': '#7A57FD',
+      '700': '#7955E8',
       '900': '#200E64'
     },
     yellow: {
@@ -41,5 +43,8 @@ export default {
     overlay: 30,
     modal: 40,
     alwaysOnTop: 50
+  },
+  border: {
+    radius: '0.4rem'
   }
 }
