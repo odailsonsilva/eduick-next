@@ -95,7 +95,7 @@ export const WrapperMobileNav = styled.div<WrapperProps>`
 
     ${isOpen &&
     css`
-      top: 83px;
+      top: 75px;
 
       background: ${transparentize(0.7, '#fff')};
       pointer-events: visible;

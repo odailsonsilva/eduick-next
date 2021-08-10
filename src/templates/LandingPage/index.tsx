@@ -35,6 +35,8 @@ export const LandingPage = () => {
           onClick={() => setShowModalStarted(!showModalStarted)}
         />
 
+        {open && <div style={{ height: 83 }} />}
+
         <S.Container>
           <S.WrapperIllustration isOpen={open}>
             <MediaMatch lessThan="medium">

@@ -1,3 +1,4 @@
+import React from 'react'
 import { Card } from 'components/molecules/Card'
 import { HeaderAuth } from 'components/molecules/HeaderAuth'
 import { ContainerInfos } from './ContainerInfos'
@@ -52,6 +53,8 @@ const mockCard = [
 ]
 
 export const Dashboard = () => {
+  const [open, setOpen] = React.useState(false)
+
   return (
     <S.Wrapper>
       <HeaderAuth
@@ -59,7 +62,10 @@ export const Dashboard = () => {
         links={linksHeader}
         buttonText="Change to teacher mode"
         themeButton="secondary"
+        openChange={(val: boolean) => setOpen(val)}
       />
+
+      {open && <div style={{ height: 166 }} />}
 
       <S.Container>
         <ContainerInfos />
