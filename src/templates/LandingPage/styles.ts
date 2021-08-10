@@ -52,6 +52,12 @@ div.wrapper__form__bg {
         right: 250px;
       }
     }
+
+    @media (min-width: 2900px) {
+      div.wrapper__form__bg {
+        display: none;
+      }
+    }
   `}
 `
 

@@ -33,7 +33,7 @@ export const Wrapper = styled.div`
       }
     }
 
-    ${media.lessThan('medium')`
+    @media (max-width: 767px) {
       position: fixed;
       top: 0;
       bottom: 0;
@@ -45,7 +45,7 @@ export const Wrapper = styled.div`
       h1 {
         margin-bottom: 3.4rem;
       }
-    `}
+    }
   `}
 `
 
@@ -63,7 +63,7 @@ export const Form = styled.form`
       margin-left: auto;
     }
 
-    ${media.lessThan('medium')`
+    @media (max-width: 767px) {
       > div.form__button {
         width: 100%;
 
@@ -71,6 +71,6 @@ export const Form = styled.form`
           width: 100%;
         }
       }
-    `}
+    }
   `}
 `

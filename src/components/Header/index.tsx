@@ -8,6 +8,7 @@ import { Button, ThemesButton } from 'components/atoms/Button'
 import { Logo } from 'components/atoms/Logo'
 
 import * as S from './styles'
+import { useMediaQuery } from 'react-responsive'
 
 type LinksData = {
   title: string
@@ -31,6 +32,7 @@ export const Header = ({
 }: HeaderProps) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const [scrolled, setScrolled] = React.useState(false)
+  const isMobileOrTabled = useMediaQuery({ maxWidth: 767 })
 
   // FUNÇÃO PARA CONTROLOAR O SCROLL
   function handleScroll() {
@@ -50,18 +52,21 @@ export const Header = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  React.useEffect(() => {
+    if (!isMobileOrTabled) {
+      setIsOpen(false)
+    }
+  }, [isOpen])
+
   return (
     <S.Wrapper isOpen={isOpen} isScrolled={scrolled} id="header">
       <S.WrapperContentDesktop>
         <S.WrapperLeft isOpen={isOpen}>
-          {/* MEDIA MATCH É UM COMPONENTE QUE CONTROLA A VISIBILIDADE DE UM ELEMENTO */}
-          <MediaMatch lessThan="medium">
-            {!isOpen && (
-              <S.IconWrapper onClick={() => setIsOpen(true)}>
-                <ReactSVG src="/icons/hamburger.svg" />
-              </S.IconWrapper>
-            )}
-          </MediaMatch>
+          {!isOpen && isMobileOrTabled && (
+            <S.IconWrapper onClick={() => setIsOpen(true)}>
+              <ReactSVG src="/icons/hamburger.svg" />
+            </S.IconWrapper>
+          )}
 
           <div className="wrapper__left__logo" onClick={() => setIsOpen(false)}>
             <Link href="/" passHref>
@@ -91,13 +96,11 @@ export const Header = ({
             </Button>
           </MediaMatch>
 
-          <MediaMatch lessThan="medium">
-            {isOpen && (
-              <S.ButtonClose type="button" onClick={() => setIsOpen(false)}>
-                <FiX size="24px" color="#fff" />
-              </S.ButtonClose>
-            )}
-          </MediaMatch>
+          {isOpen && isMobileOrTabled && (
+            <S.ButtonClose type="button" onClick={() => setIsOpen(false)}>
+              <FiX size="24px" color="#fff" />
+            </S.ButtonClose>
+          )}
         </S.WrapperRight>
       </S.WrapperContentDesktop>
 

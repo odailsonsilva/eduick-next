@@ -6,6 +6,7 @@ import Modal from 'components/atoms/Modal'
 
 import * as S from './styles'
 import MediaMatch from 'components/MediaMatch'
+import { FormEvent } from 'react'
 
 type Props = {
   isOpen: boolean
@@ -13,6 +14,10 @@ type Props = {
 }
 
 export const ModalLogin = ({ isOpen, onRequestClose }: Props) => {
+  function onRequestSignIn(event: FormEvent) {
+    event.preventDefault()
+  }
+
   return (
     <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
       <S.Wrapper>
@@ -29,7 +34,7 @@ export const ModalLogin = ({ isOpen, onRequestClose }: Props) => {
           </MediaMatch>
         </div>
 
-        <S.Form>
+        <S.Form onSubmit={onRequestSignIn}>
           <div className="form__input">
             <Input label="Username:" />
           </div>
@@ -39,7 +44,7 @@ export const ModalLogin = ({ isOpen, onRequestClose }: Props) => {
           </div>
 
           <div className="form__button">
-            <Button>LOGIN</Button>
+            <Button type="submit">LOGIN</Button>
           </div>
         </S.Form>
       </S.Wrapper>

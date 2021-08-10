@@ -11,7 +11,7 @@ export const Wrapper = styled.header<WrapperProps>`
     display: flex;
     flex-direction: column;
 
-    ${media.lessThan('medium')`
+    @media (max-width: 767px) {
       width: 100%;
 
       padding: 2.4rem;
@@ -20,14 +20,12 @@ export const Wrapper = styled.header<WrapperProps>`
 
       z-index: ${theme.layers.overlay};
 
-      ${
-        isOpen &&
-        css`
-          background: ${theme.colors.purple[900]};
-          position: fixed;
-        `
-      }
-    `}
+      ${isOpen &&
+      css`
+        background: ${theme.colors.purple[900]};
+        position: fixed;
+      `}
+    }
   `}
 `
 
@@ -46,14 +44,14 @@ export const WrapperLeft = styled.div<WrapperProps>`
       cursor: pointer;
     }
 
-    ${media.lessThan('medium')`
+    @media (max-width: 767px) {
       width: 100vw;
 
       div.wrapper__left__logo {
         margin-left: ${isOpen ? '0px' : '2rem'};
         transition: all 0.2s ease-in-out;
       }
-    `}
+    }
   `}
 `
 
@@ -142,37 +140,37 @@ export const Nav = styled.nav`
       }
     }
 
-    ${media.lessThan('medium')`
-        margin-left: 0;
+    @media (max-width: 767px) {
+      margin-left: 0;
+
+      width: 100%;
+
+      ul {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        li + li {
+          margin-left: 0;
+          margin-top: 1.5rem;
+        }
+
+        li > a {
+          font-size: 2.1rem;
+          line-height: 2.9rem;
+        }
+      }
+
+      div.menu__button {
+        margin-top: 6rem;
 
         width: 100%;
 
-        ul {
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-
-          li + li {
-            margin-left: 0;
-            margin-top: 1.5rem;
-          }
-
-          li > a{
-            font-size: 2.1rem;
-            line-height: 2.9rem;
-          }
-        }
-
-        div.menu__button {
-          margin-top: 6rem;
-
+        button {
           width: 100%;
-
-          button {
-            width: 100%;
-          }
         }
-      `}
+      }
+    }
   `}
 `
 

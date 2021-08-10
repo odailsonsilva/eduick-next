@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 
 import { Button } from 'components/atoms/Button'
 import { Input } from 'components/atoms/Input'
@@ -9,6 +8,7 @@ import { Header } from 'components/Header'
 import * as S from './styles'
 import MediaMatch from 'components/MediaMatch'
 import { ModalLogin } from './ModalLogin'
+import { useMediaQuery } from 'react-responsive'
 
 const linksHeader = [
   { title: 'How it works', href: '/' },
@@ -23,6 +23,7 @@ const optionsRadio = [
 export const LandingPage = () => {
   const [open, setOpen] = React.useState(false)
   const [showModalStarted, setShowModalStarted] = React.useState(false)
+  const isTabledOrMobile = useMediaQuery({ maxWidth: 767 })
 
   return (
     <S.Wrapper isOpen={open}>
@@ -36,13 +37,11 @@ export const LandingPage = () => {
 
         <S.Container>
           <S.WrapperIllustration isOpen={open}>
-            <MediaMatch lessThan="medium">
+            {isTabledOrMobile ? (
               <img src="/illustrations/detail-mobile.svg" alt="" />
-            </MediaMatch>
-
-            <MediaMatch greaterThan="medium">
+            ) : (
               <img src="/illustrations/detail-lp-1.svg" alt="" />
-            </MediaMatch>
+            )}
           </S.WrapperIllustration>
 
           <S.WrapperForm>

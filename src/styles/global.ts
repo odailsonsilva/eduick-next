@@ -44,11 +44,11 @@ const GlobalStyles = createGlobalStyle`
       z-index: 50;
     }
 
-    ${media.lessThan('medium')`
+    @media (max-width: 767px) {
       .react-modal-overlay {
-          background:${theme.colors.purple[500]};
+        background: ${theme.colors.purple[500]};
       }
-    `}
+    }
 
     ${media.greaterThan('medium')`
       .react-modal-content {
