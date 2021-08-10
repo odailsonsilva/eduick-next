@@ -18,13 +18,38 @@ export type HeaderProps = {
   links: LinksData[]
   buttonText: string
   themeButton?: ThemesButton
+  openChange?: (op: boolean) => void
 }
 
-export const Header = ({ links, themeButton, buttonText }: HeaderProps) => {
+export const Header = ({
+  links,
+  openChange,
+  themeButton,
+  buttonText
+}: HeaderProps) => {
   const [isOpen, setIsOpen] = React.useState(false)
+  const [scrolled, setScrolled] = React.useState(false)
+
+  // FUNÇÃO PARA CONTROLOAR O SCROLL
+  function handleScroll() {
+    setScrolled(window.scrollY > 10)
+  }
+
+  // CAPTURA A MUDANCA DE ESTADO DO ISOPEN E PASSAR PARA COMPONENTE PAI (COMUNICACAO INDIRETA )
+  React.useEffect(() => {
+    if (openChange) {
+      openChange!(isOpen)
+    }
+  }, [isOpen])
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
-    <S.Wrapper isOpen={isOpen}>
+    <S.Wrapper isOpen={isOpen} isScrolled={scrolled} id="header">
       <S.WrapperContentDesktop>
         <S.WrapperLeft isOpen={isOpen}>
           {/* MEDIA MATCH É UM COMPONENTE QUE CONTROLA A VISIBILIDADE DE UM ELEMENTO */}

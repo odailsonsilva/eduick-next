@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Label = styled.label`
   ${({ theme }) => css`
@@ -49,6 +50,10 @@ export const WrapperInput = styled.div`
 
       margin-left: 0.8rem;
     }
+
+    ${media.lessThan('medium')`
+      padding: 1rem 2.2rem 1rem 2.2rem;
+    `}
   `}
 `
 

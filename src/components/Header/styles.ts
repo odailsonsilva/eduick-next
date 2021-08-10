@@ -3,26 +3,30 @@ import media from 'styled-media-query'
 
 type WrapperProps = {
   isOpen: boolean
+  isScrolled?: boolean
 }
 
 export const Wrapper = styled.header<WrapperProps>`
-  ${({ theme, isOpen }) => css`
+  ${({ theme, isOpen, isScrolled }) => css`
     display: flex;
     flex-direction: column;
 
     ${media.lessThan('medium')`
       width: 100%;
-      height: 100%;
 
-      z-index: ${theme.layers.menu};
+      padding: 2.4rem;
+
+      position: relative;
+
+      z-index: ${theme.layers.overlay};
 
       ${
         isOpen &&
         css`
           background: ${theme.colors.purple[900]};
+          position: fixed;
         `
       }
-
     `}
   `}
 `
@@ -54,17 +58,37 @@ export const IconWrapper = styled.div`
 `
 
 export const WrapperMobileNav = styled.div<WrapperProps>`
-  ${({ isOpen }) => css`
+  ${({ theme, isOpen }) => css`
     display: flex;
     align-items: center;
     justify-content: center;
 
-    height: calc(100vh - 35px);
     width: 100%;
 
     transition: all 0.3s ease-in-out;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
     opacity: ${isOpen ? 1 : 0};
     transform: ${isOpen ? 'translateY(0)' : 'translateY(3rem)'};
+
+    padding: 0 2.4rem;
+
+    z-index: ${theme.layers.menu};
+
+    pointer-events: none;
+
+    ${isOpen &&
+    css`
+      top: 83px;
+
+      background: ${theme.colors.purple[900]};
+      pointer-events: visible;
+    `}
   `}
 `
 

@@ -11,13 +11,17 @@ type Props = {
   defaultValue?: string
 }
 
-const Radio = ({ options, defaultValue, ...rest }: Props) => {
-  const [check, setCheck] = React.useState('')
+const Radio = ({ options, defaultValue = '', ...rest }: Props) => {
+  const [check, setCheck] = React.useState(defaultValue)
 
   return (
     <S.Wrapper>
       {options?.map((option) => (
-        <S.WrapperItem key={option.value} isChecked={check === option.value}>
+        <S.WrapperItem
+          type="button"
+          key={option.value}
+          isChecked={check === option.value}
+        >
           <label htmlFor={option.value}>
             <input
               defaultChecked={option.value === defaultValue}

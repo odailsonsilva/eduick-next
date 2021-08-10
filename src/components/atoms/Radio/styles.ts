@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 type WrapperItemProps = {
   isChecked: boolean
@@ -14,7 +15,6 @@ export const WrapperItem = styled.button<WrapperItemProps>`
     justify-content: center;
 
     background: rgba(121, 85, 232, 0.3);
-    padding: 1.4rem 1.6rem;
 
     width: fit-content;
 
@@ -36,11 +36,17 @@ export const WrapperItem = styled.button<WrapperItemProps>`
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 1.4rem 1.6rem;
+      cursor: pointer;
 
       input {
         display: none;
       }
     }
+
+    ${media.lessThan('medium')`
+      width: 100%;
+    `}
   `}
 `
 
@@ -53,7 +59,7 @@ export const Check = styled.div`
     background: ${theme.colors.purple[300]};
     box-sizing: border-box;
 
-    margin-right: 1.8rem;
+    margin-right: 0.8rem;
     margin-bottom: 1px;
 
     border-radius: 50%;
@@ -84,6 +90,10 @@ export const Label = styled.div`
       font-weight: ${theme.font.bold};
 
       padding: 0;
+
+      ${media.lessThan('medium')`
+        font-size: 1rem;
+      `}
     }
   `}
 `
@@ -114,5 +124,9 @@ export const Wrapper = styled.div`
     ${WrapperItem} + ${WrapperItem} {
       margin-left: ${theme.spacings.md};
     }
+
+    ${media.lessThan('medium')`
+      width: 100%;
+    `}
   `}
 `
