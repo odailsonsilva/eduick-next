@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ReactSVG } from 'react-svg'
 import { FiX } from 'react-icons/fi'
 
-import MediaMatch from 'components/MediaMatch'
+import MediaMatch from 'components/molecules/MediaMatch'
 import { Button, ThemesButton } from 'components/atoms/Button'
 import { Logo } from 'components/atoms/Logo'
 
@@ -32,25 +32,12 @@ export const Header = ({
   const [isOpen, setIsOpen] = React.useState(false)
   const [scrolled, setScrolled] = React.useState(false)
 
-  // FUNÇÃO PARA CONTROLOAR O RESIZE DA PAGINA
-  function handleResize() {
-    if (!(window.innerWidth > 767)) {
-      setIsOpen(false)
-    }
-  }
-
   // CAPTURA A MUDANCA DE ESTADO DO ISOPEN E PASSAR PARA COMPONENTE PAI (COMUNICACAO INDIRETA )
   React.useEffect(() => {
     if (openChange) {
       openChange!(isOpen)
     }
   }, [isOpen])
-
-  React.useEffect(() => {
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return (
     <S.Wrapper isOpen={isOpen} isScrolled={scrolled} id="header">

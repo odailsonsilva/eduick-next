@@ -2,7 +2,7 @@ import ReactModal from 'react-modal'
 import { FiX } from 'react-icons/fi'
 
 import * as S from './styles'
-import MediaMatch from 'components/MediaMatch'
+import MediaMatch from 'components/molecules/MediaMatch'
 
 interface ModalProps {
   isOpen: boolean

@@ -3,10 +3,10 @@ import React from 'react'
 import { Button } from 'components/atoms/Button'
 import { Input } from 'components/atoms/Input'
 import Radio from 'components/atoms/Radio'
-import { Header } from 'components/Header'
+import { Header } from 'components/molecules/Header'
 
 import * as S from './styles'
-import MediaMatch from 'components/MediaMatch'
+import MediaMatch from 'components/molecules/MediaMatch'
 import { ModalLogin } from './ModalLogin'
 import { useMediaQuery } from 'react-responsive'
 

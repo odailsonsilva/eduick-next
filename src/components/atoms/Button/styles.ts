@@ -1,4 +1,5 @@
 import styled, { css, DefaultTheme } from 'styled-components'
+import { transparentize } from 'polished'
 import { ButtonProps } from '.'
 
 const modifiersTheme = {
@@ -7,7 +8,7 @@ const modifiersTheme = {
     color: #6f48ec;
   `,
   secondary: (theme: DefaultTheme) => css`
-    background: ${theme.colors.purple[900]};
+    background: ${transparentize(0.7, theme.colors.purple[900])};
     color: ${theme.colors.white[500]};
   `
 }

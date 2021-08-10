@@ -8,7 +8,7 @@ import * as S from './styles'
 
 import { FormEvent } from 'react'
 
-import MediaMatch from 'components/MediaMatch'
+import MediaMatch from 'components/molecules/MediaMatch'
 
 type Props = {
   isOpen: boolean
