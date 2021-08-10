@@ -22,6 +22,15 @@ const GlobalStyles = createGlobalStyle`
       font-size: ${theme.font.sizes.medium};
     }
 
+    body,
+    #__next {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+      overflow-x: hidden;
+    }
+
     .react-modal-overlay {
       background: ${transparentize(0.2, theme.colors.purple[900])};
       position: fixed;

@@ -88,7 +88,7 @@ export const WrapperMobileNav = styled.div<WrapperProps>`
 
     ${isOpen &&
     css`
-      top: 83px;
+      top: 70px;
 
       background: ${theme.colors.purple[900]};
       pointer-events: visible;
