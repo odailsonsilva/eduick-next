@@ -51,7 +51,7 @@ export const WrapperLeft = styled.div<WrapperProps>`
 
       div.wrapper__left__logo {
         margin-left: ${isOpen ? '0px' : '2rem'};
-        transition: all 0.3s ease-in-out;
+        transition: all 0.2s ease-in-out;
       }
     `}
   `}
@@ -69,7 +69,7 @@ export const WrapperMobileNav = styled.div<WrapperProps>`
 
     width: 100%;
 
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
 
     position: fixed;
     top: 0;
@@ -130,7 +130,7 @@ export const Nav = styled.nav`
           background: ${theme.colors.white[500]};
           transform: scale(0, 1);
           transform-origin: 0% 100%;
-          transition: transform 0.3s ease;
+          transition: transform 0.2s ease;
 
           position: absolute;
           bottom: -2px;

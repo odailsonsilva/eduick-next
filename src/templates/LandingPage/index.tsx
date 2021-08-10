@@ -25,16 +25,17 @@ export const LandingPage = () => {
   const [showModalStarted, setShowModalStarted] = React.useState(false)
 
   return (
-    <S.Wrapper>
+    <S.Wrapper isOpen={open}>
       <S.Content>
         <Header
           links={linksHeader}
           buttonText="Get Started"
+          openChange={(val: boolean) => setOpen(val)}
           onClick={() => setShowModalStarted(!showModalStarted)}
         />
 
-        <S.Container isOpen={open}>
-          <S.WrapperIllustration>
+        <S.Container>
+          <S.WrapperIllustration isOpen={open}>
             <MediaMatch lessThan="medium">
               <img src="/illustrations/detail-mobile.svg" alt="" />
             </MediaMatch>

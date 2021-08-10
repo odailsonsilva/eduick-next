@@ -1,47 +1,58 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
-export const Wrapper = styled.div`
-  background: linear-gradient(180deg, #7a57fd 0%, #6135d7 100%);
+type ContainerProps = {
+  isOpen: boolean
+}
 
-  width: 100vw;
-  min-height: 100vh;
+export const Wrapper = styled.div<ContainerProps>`
+  ${({ isOpen }) => css`
+    background: linear-gradient(180deg, #7a57fd 0%, #6135d7 100%);
 
-  overflow: auto;
+    width: 100vw;
+    min-height: 100vh;
 
-  position: relative;
+    overflow: auto;
 
-  overflow-x: hidden;
+    position: relative;
 
-  div.wrapper__form__bg {
-    position: absolute;
+    overflow-x: hidden;
 
-    right: 0;
+    ${isOpen &&
+    css`
+      height: fit-content;
+    `}
 
-    z-index: 5;
-
-    pointer-events: none;
-  }
-
-  ${media.greaterThan('large')`
     div.wrapper__form__bg {
-      right: -400px;
-      top: 40px;
+      position: absolute;
+
+      right: 0;
+
+      z-index: 5;
+
+      pointer-events: none;
+    }
+
+    ${media.greaterThan('large')`
+div.wrapper__form__bg {
+  right: -400px;
+  top: 40px;
+}
+`}
+
+    @media (min-width: 1928px) {
+      div.wrapper__form__bg {
+        right: 0px;
+        top: 170px;
+      }
+    }
+
+    @media (min-width: 2450px) {
+      div.wrapper__form__bg {
+        right: 250px;
+      }
     }
   `}
-
-  @media (min-width: 1928px) {
-    div.wrapper__form__bg {
-      right: 0px;
-      top: 170px;
-    }
-  }
-
-  @media (min-width: 2450px) {
-    div.wrapper__form__bg {
-      right: 250px;
-    }
-  }
 `
 
 export const Content = styled.div`
@@ -55,11 +66,7 @@ export const Content = styled.div`
   `}
 `
 
-type ContainerProps = {
-  isOpen: boolean
-}
-
-export const Container = styled.main<ContainerProps>`
+export const Container = styled.main`
   ${({ theme }) => css`
     display: flex;
     flex-direction: column;
@@ -74,8 +81,8 @@ export const Container = styled.main<ContainerProps>`
   `}
 `
 
-export const WrapperIllustration = styled.div`
-  ${({ theme }) => css`
+export const WrapperIllustration = styled.div<ContainerProps>`
+  ${({ theme, isOpen }) => css`
     margin-top: 6rem;
 
     display: flex;
@@ -83,6 +90,10 @@ export const WrapperIllustration = styled.div`
     justify-content: center;
 
     z-index: ${theme.layers.base};
+
+    transition: position 1s ease;
+
+    display: ${isOpen ? 'none' : 'flex'};
 
     ${media.greaterThan('large')`
       margin-left: -190px;
