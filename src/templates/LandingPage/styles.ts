@@ -11,15 +11,36 @@ export const Wrapper = styled.div`
 
   position: relative;
 
+  overflow-x: hidden;
+
   div.wrapper__form__bg {
     position: absolute;
 
     right: 0;
-    top: 70px;
 
     z-index: 5;
 
     pointer-events: none;
+  }
+
+  ${media.greaterThan('large')`
+    div.wrapper__form__bg {
+      right: -400px;
+      top: 40px;
+    }
+  `}
+
+  @media (min-width: 1928px) {
+    div.wrapper__form__bg {
+      right: 0px;
+      top: 170px;
+    }
+  }
+
+  @media (min-width: 2450px) {
+    div.wrapper__form__bg {
+      right: 250px;
+    }
   }
 `
 
@@ -47,6 +68,8 @@ export const Container = styled.main<ContainerProps>`
 
     ${media.greaterThan('large')`
       flex-direction: row;
+
+      margin-top: 10rem;
     `}
   `}
 `
@@ -85,15 +108,38 @@ export const WrapperForm = styled.div`
 
       span {
         color: ${theme.colors.yellow[500]};
+
+        text-transform: uppercase;
+        font-weight: 700;
       }
 
       margin-bottom: 6rem;
     }
 
+    > div > p {
+      font-size: 1.6rem;
+      line-height: 191.68%;
+
+      color: ${theme.colors.white[500]};
+
+      margin: 6rem 0;
+    }
+
     ${media.greaterThan('large')`
       order: 0;
 
-      margin-top: 14rem;
+      margin-top: 4rem;
+
+
+      h1 {
+        font-size: 4.8rem;
+        line-height: 5.7rem;
+        letter-spacing: -0.06em;
+
+        font-weight: normal;
+
+        margin-bottom: 0;
+      }
     `}
   `}
 `

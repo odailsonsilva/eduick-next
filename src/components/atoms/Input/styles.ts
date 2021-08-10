@@ -49,6 +49,8 @@ export const WrapperInput = styled.div`
       margin-top: 4px;
 
       margin-left: 0.8rem;
+
+      cursor: pointer;
     }
 
     ${media.lessThan('medium')`

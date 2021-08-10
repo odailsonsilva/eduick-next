@@ -19,13 +19,15 @@ export type HeaderProps = {
   buttonText: string
   themeButton?: ThemesButton
   openChange?: (op: boolean) => void
+  onClick: () => void
 }
 
 export const Header = ({
   links,
   openChange,
   themeButton,
-  buttonText
+  buttonText,
+  onClick
 }: HeaderProps) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const [scrolled, setScrolled] = React.useState(false)
@@ -61,8 +63,10 @@ export const Header = ({
             )}
           </MediaMatch>
 
-          <div className="wrapper__left__logo">
-            <Logo aria-label="Logo Eduick" />
+          <div className="wrapper__left__logo" onClick={() => setIsOpen(false)}>
+            <Link href="/" passHref>
+              <Logo aria-label="Logo Eduick" />
+            </Link>
           </div>
 
           <MediaMatch greaterThan="medium">
@@ -82,7 +86,9 @@ export const Header = ({
 
         <S.WrapperRight aria-label="Button get started">
           <MediaMatch greaterThan="medium">
-            <Button themeButton={themeButton}>{buttonText}</Button>
+            <Button themeButton={themeButton} onClick={onClick}>
+              {buttonText}
+            </Button>
           </MediaMatch>
 
           <MediaMatch lessThan="medium">
@@ -109,7 +115,9 @@ export const Header = ({
             </ul>
 
             <div className="menu__button">
-              <Button themeButton={themeButton}>{buttonText}</Button>
+              <Button themeButton={themeButton} onClick={onClick}>
+                {buttonText}
+              </Button>
             </div>
           </S.Nav>
         </S.WrapperMobileNav>

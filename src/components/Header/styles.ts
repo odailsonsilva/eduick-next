@@ -42,6 +42,10 @@ export const WrapperLeft = styled.div<WrapperProps>`
     display: flex;
     align-items: center;
 
+    div.wrapper__left__logo {
+      cursor: pointer;
+    }
+
     ${media.lessThan('medium')`
       width: 100vw;
 

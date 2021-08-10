@@ -8,6 +8,7 @@ import { Header } from 'components/Header'
 
 import * as S from './styles'
 import MediaMatch from 'components/MediaMatch'
+import { ModalLogin } from './ModalLogin'
 
 const linksHeader = [
   { title: 'How it works', href: '/' },
@@ -21,11 +22,16 @@ const optionsRadio = [
 
 export const LandingPage = () => {
   const [open, setOpen] = React.useState(false)
+  const [showModalStarted, setShowModalStarted] = React.useState(false)
 
   return (
     <S.Wrapper>
       <S.Content>
-        <Header links={linksHeader} buttonText="Get Started" />
+        <Header
+          links={linksHeader}
+          buttonText="Get Started"
+          onClick={() => setShowModalStarted(!showModalStarted)}
+        />
 
         <S.Container isOpen={open}>
           <S.WrapperIllustration>
@@ -42,6 +48,14 @@ export const LandingPage = () => {
             <h1>
               Find your <br /> <span>best teacher</span>
             </h1>
+
+            <MediaMatch greaterThan="large">
+              <p>
+                Whether you are a student trying to find your ideal private
+                language teachers/tutors or a teacher trying to find great
+                students for your customised private lessons!
+              </p>
+            </MediaMatch>
 
             <S.Form className="wrapper__form">
               <div className="form__input">
@@ -65,6 +79,11 @@ export const LandingPage = () => {
           <img src="/illustrations/detail-lp-2.svg" alt="Illustracao 2" />
         </div>
       </MediaMatch>
+
+      <ModalLogin
+        isOpen={showModalStarted}
+        onRequestClose={() => setShowModalStarted(!showModalStarted)}
+      />
 
       <S.Footer />
     </S.Wrapper>

@@ -2,6 +2,7 @@ import ReactModal from 'react-modal'
 import { FiX } from 'react-icons/fi'
 
 import * as S from './styles'
+import MediaMatch from 'components/MediaMatch'
 
 interface ModalProps {
   isOpen: boolean
@@ -9,7 +10,7 @@ interface ModalProps {
   children: React.ReactNode
 }
 
-ReactModal.setAppElement('#root')
+ReactModal.setAppElement('#__next')
 
 const Modal = ({ isOpen, onRequestClose, children }: ModalProps) => {
   return (
@@ -20,9 +21,11 @@ const Modal = ({ isOpen, onRequestClose, children }: ModalProps) => {
         overlayClassName="react-modal-overlay"
         className="react-modal-content"
       >
-        <S.ButtonClose onClick={onRequestClose}>
-          <FiX size="24px" color="#fff" />
-        </S.ButtonClose>
+        <MediaMatch greaterThan="medium">
+          <S.ButtonClose onClick={onRequestClose}>
+            <FiX size="24px" color="#fff" />
+          </S.ButtonClose>
+        </MediaMatch>
         {children}
       </ReactModal>
     </S.Wrapper>

@@ -1,5 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components'
 import { transparentize } from 'polished'
+import media from 'styled-media-query'
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -42,20 +43,29 @@ const GlobalStyles = createGlobalStyle`
       justify-content: center;
       z-index: 50;
     }
-    .react-modal-content {
-      background: #fff;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.16);
-      border-radius: 4px;
-      padding: 4rem;
-      outline: none;
 
-      margin: 0 1.6rem;
+    ${media.lessThan('medium')`
+      .react-modal-overlay {
+          background:${theme.colors.purple[500]};
+      }
+    `}
 
-      position: relative;
+    ${media.greaterThan('medium')`
+      .react-modal-content {
+        background: #fff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.16);
+        border-radius: 4px;
+        padding: 4rem;
+        outline: none;
 
-      background: ${theme.colors.purple[500]};
-      width: 52.5rem;
-    }
+        margin: 0 1.6rem;
+
+        position: relative;
+
+        background: ${theme.colors.purple[500]};
+        width: 52.5rem;
+      }
+    `}
   `}
 
 
