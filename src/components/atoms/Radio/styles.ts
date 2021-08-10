@@ -122,13 +122,15 @@ const modifiersWrapper = {
   `
 }
 
-export const Wrapper = styled.div<WrapperProps>`
-  ${({ theme, direction }) => css`
+export const Wrapper = styled.div`
+  ${({ theme }) => css`
     display: flex;
     align-items: center;
     place-content: center;
 
     width: fit-content;
+
+    ${modifiersWrapper.row(theme)}
 
     input:checked + ${ContainerChecked} {
       ${Check} {
@@ -144,8 +146,10 @@ export const Wrapper = styled.div<WrapperProps>`
       width: 100%;
 
       display: flex;
-
-      ${modifiersWrapper[direction!](theme)}
     `}
+
+    @media (max-width: 350px) {
+      ${modifiersWrapper.column(theme)}
+    }
   `}
 `

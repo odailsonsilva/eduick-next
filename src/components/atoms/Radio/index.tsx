@@ -9,19 +9,13 @@ type Options = {
 type Props = {
   options: Options[]
   defaultValue?: string
-  direction?: 'row' | 'column'
 }
 
-const Radio = ({
-  options,
-  defaultValue = '',
-  direction = 'row',
-  ...rest
-}: Props) => {
+const Radio = ({ options, defaultValue = '', ...rest }: Props) => {
   const [check, setCheck] = React.useState(defaultValue)
 
   return (
-    <S.Wrapper direction={direction}>
+    <S.Wrapper>
       {options?.map((option) => (
         <S.WrapperItem
           type="button"

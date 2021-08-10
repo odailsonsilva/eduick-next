@@ -65,11 +65,7 @@ export const LandingPage = () => {
               </div>
 
               <div className="form__radio">
-                <Radio
-                  defaultValue="1"
-                  options={optionsRadio}
-                  direction={isMobileSmall ? 'column' : 'row'}
-                />
+                <Radio defaultValue="1" options={optionsRadio} />
               </div>
 
               <div className="form__button">
