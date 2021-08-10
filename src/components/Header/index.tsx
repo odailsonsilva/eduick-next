@@ -35,8 +35,10 @@ export const Header = ({
   const isMobileOrTabled = useMediaQuery({ maxWidth: 767 })
 
   // FUNÇÃO PARA CONTROLOAR O SCROLL
-  function handleScroll() {
-    setScrolled(window.scrollY > 10)
+  function handleResize() {
+    if (!(window.innerWidth > 767)) {
+      setIsOpen(false)
+    }
   }
 
   // CAPTURA A MUDANCA DE ESTADO DO ISOPEN E PASSAR PARA COMPONENTE PAI (COMUNICACAO INDIRETA )
@@ -47,16 +49,10 @@ export const Header = ({
   }, [isOpen])
 
   React.useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  React.useEffect(() => {
-    if (!isMobileOrTabled) {
-      setIsOpen(false)
-    }
-  }, [isOpen])
 
   return (
     <S.Wrapper isOpen={isOpen} isScrolled={scrolled} id="header">

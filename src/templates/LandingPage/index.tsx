@@ -24,6 +24,7 @@ export const LandingPage = () => {
   const [open, setOpen] = React.useState(false)
   const [showModalStarted, setShowModalStarted] = React.useState(false)
   const isTabledOrMobile = useMediaQuery({ maxWidth: 767 })
+  const isMobileSmall = useMediaQuery({ maxWidth: 360 })
 
   return (
     <S.Wrapper isOpen={open}>
@@ -63,7 +64,11 @@ export const LandingPage = () => {
               </div>
 
               <div className="form__radio">
-                <Radio defaultValue="1" options={optionsRadio} />
+                <Radio
+                  defaultValue="1"
+                  options={optionsRadio}
+                  direction={isMobileSmall ? 'column' : 'row'}
+                />
               </div>
 
               <div className="form__button">

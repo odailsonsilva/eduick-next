@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css, DefaultTheme } from 'styled-components'
 import media from 'styled-media-query'
 
 type WrapperItemProps = {
@@ -11,8 +11,6 @@ export const WrapperItem = styled.button<WrapperItemProps>`
     flex-direction: column;
     width: 100%;
     height: 5.6rem;
-    align-items: center;
-    justify-content: center;
 
     background: rgba(121, 85, 232, 0.3);
 
@@ -103,8 +101,29 @@ export const ContainerChecked = styled.div`
   align-items: center;
 `
 
-export const Wrapper = styled.div`
-  ${({ theme }) => css`
+type WrapperProps = {
+  direction: 'row' | 'column'
+}
+
+const modifiersWrapper = {
+  row: (theme: DefaultTheme) => css`
+    flex-direction: row;
+
+    ${WrapperItem} + ${WrapperItem} {
+      margin-left: ${theme.spacings.md};
+    }
+  `,
+  column: (theme: DefaultTheme) => css`
+    flex-direction: column;
+
+    ${WrapperItem} + ${WrapperItem} {
+      margin-top: ${theme.spacings.md};
+    }
+  `
+}
+
+export const Wrapper = styled.div<WrapperProps>`
+  ${({ theme, direction }) => css`
     display: flex;
     align-items: center;
     place-content: center;
@@ -121,12 +140,12 @@ export const Wrapper = styled.div`
       }
     }
 
-    ${WrapperItem} + ${WrapperItem} {
-      margin-left: ${theme.spacings.md};
-    }
-
     ${media.lessThan('medium')`
       width: 100%;
+
+      display: flex;
+
+      ${modifiersWrapper[direction!](theme)}
     `}
   `}
 `
