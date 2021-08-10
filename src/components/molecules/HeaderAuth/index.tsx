@@ -30,7 +30,7 @@ export const HeaderAuth = ({
   buttonText,
   onClick
 }: HeaderProps) => {
-  const [isOpen, setIsOpen] = React.useState(true)
+  const [isOpen, setIsOpen] = React.useState(false)
   const [scrolled, setScrolled] = React.useState(false)
   const isMobileOrTablet = useMediaQuery({ maxWidth: 767 })
 
@@ -59,83 +59,89 @@ export const HeaderAuth = ({
 
   return (
     <S.Wrapper isOpen={isOpen} isScrolled={scrolled} id="header">
-      <S.WrapperContentDesktop>
-        <S.WrapperLeft isOpen={isOpen}>
-          <div className="wrapper__lef__logo" onClick={() => setIsOpen(false)}>
-            <Link href="/" passHref>
-              <Logo
-                aria-label="Logo Eduick"
-                activedDetails={!isMobileOrTablet}
-              />
-            </Link>
-          </div>
+      <S.Container>
+        <S.WrapperContentDesktop>
+          <S.WrapperLeft isOpen={isOpen}>
+            <div
+              className="wrapper__lef__logo"
+              onClick={() => setIsOpen(false)}
+              style={{ cursor: 'pointer' }}
+            >
+              <Link href="/" passHref>
+                <Logo
+                  aria-label="Logo Eduick"
+                  activedDetails={!isMobileOrTablet}
+                />
+              </Link>
+            </div>
 
-          <MediaMatch greaterThan="medium">
-            <S.Nav aria-label="Menu">
+            <MediaMatch greaterThan="medium">
+              <S.Nav aria-label="Menu">
+                <ul className="list">
+                  {links.map((link, index) => (
+                    <li key={index} className="list__item">
+                      <Link href={link.href} passHref>
+                        {link.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </S.Nav>
+            </MediaMatch>
+          </S.WrapperLeft>
+
+          <S.WrapperRight aria-label="Button get started">
+            <MediaMatch greaterThan="medium">
+              <Button themeButton={themeButton} onClick={onClick}>
+                {buttonText}
+              </Button>
+            </MediaMatch>
+
+            <MediaMatch lessThan="medium">
+              <button
+                type="button"
+                className="wrapper__right__dropdown"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                {isOpen ? (
+                  <FiChevronUp color="#2E3A59" size="24px" />
+                ) : (
+                  <FiChevronDown color="#2E3A59" size="24px" />
+                )}
+              </button>
+            </MediaMatch>
+
+            <Avatar />
+          </S.WrapperRight>
+        </S.WrapperContentDesktop>
+
+        <MediaMatch lessThan="medium">
+          <S.WrapperMobileNav isOpen={isOpen}>
+            <S.Nav aria-label="Menu" ref={refElement}>
               <ul className="list">
-                {links.map((link, index) => (
-                  <li key={index} className="list__item">
-                    <Link href={link.href} passHref>
-                      {link.title}
-                    </Link>
-                  </li>
-                ))}
+                <li className="list__item" onClick={() => setIsOpen(false)}>
+                  <Link href="/" passHref>
+                    {buttonText}
+                  </Link>
+
+                  <FiArrowRight color="#2E3A59" size="16px" />
+                </li>
+
+                <li
+                  className="list__item--logout"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Link href="/" passHref>
+                    LOGOUT
+                  </Link>
+
+                  <FiArrowRight color="#2E3A59" size="16px" />
+                </li>
               </ul>
             </S.Nav>
-          </MediaMatch>
-        </S.WrapperLeft>
-
-        <S.WrapperRight aria-label="Button get started">
-          <MediaMatch greaterThan="medium">
-            <Button themeButton={themeButton} onClick={onClick}>
-              {buttonText}
-            </Button>
-          </MediaMatch>
-
-          <MediaMatch lessThan="medium">
-            <button
-              type="button"
-              className="wrapper__right__dropdown"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? (
-                <FiChevronUp color="#2E3A59" size="24px" />
-              ) : (
-                <FiChevronDown color="#2E3A59" size="24px" />
-              )}
-            </button>
-          </MediaMatch>
-
-          <Avatar />
-        </S.WrapperRight>
-      </S.WrapperContentDesktop>
-
-      <MediaMatch lessThan="medium">
-        <S.WrapperMobileNav isOpen={isOpen}>
-          <S.Nav aria-label="Menu" ref={refElement}>
-            <ul className="list">
-              <li className="list__item" onClick={() => setIsOpen(false)}>
-                <Link href="/" passHref>
-                  {buttonText}
-                </Link>
-
-                <FiArrowRight color="#2E3A59" size="16px" />
-              </li>
-
-              <li
-                className="list__item--logout"
-                onClick={() => setIsOpen(false)}
-              >
-                <Link href="/" passHref>
-                  LOGOUT
-                </Link>
-
-                <FiArrowRight color="#2E3A59" size="16px" />
-              </li>
-            </ul>
-          </S.Nav>
-        </S.WrapperMobileNav>
-      </MediaMatch>
+          </S.WrapperMobileNav>
+        </MediaMatch>
+      </S.Container>
     </S.Wrapper>
   )
 }

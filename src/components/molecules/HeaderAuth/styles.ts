@@ -12,6 +12,8 @@ export const Wrapper = styled.header<WrapperProps>`
     display: flex;
     flex-direction: column;
 
+    width: 100vw;
+
     background: ${theme.colors.purple[600]};
 
     padding: 2.4rem;
@@ -29,6 +31,17 @@ export const Wrapper = styled.header<WrapperProps>`
       `}
     }
   `}
+`
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  max-width: 1250px;
+  width: 100%;
+
+  margin: 0 auto;
+  padding-left: --60px;
 `
 
 export const WrapperContentDesktop = styled.div`
@@ -170,11 +183,9 @@ export const Nav = styled.nav`
       }
     }
 
-    ${media.lessThan('medium')`
+    @media (max-width: 767px) {
       background: ${theme.colors.white[500]};
       box-shadow: 0px 32px 60px rgba(84, 95, 122, 0.08);
-
-
 
       ul {
         align-items: flex-start;
@@ -195,7 +206,6 @@ export const Nav = styled.nav`
           transition: background 0.2s ease;
         }
 
-
         li > a {
           font-size: 1.1rem;
           line-height: 1.5rem;
@@ -206,8 +216,8 @@ export const Nav = styled.nav`
           color: ${theme.colors.purple[600]};
         }
 
-        li.list__item--logout > a{
-          color: #F44336;
+        li.list__item--logout > a {
+          color: #f44336;
         }
 
         li::after {
@@ -219,7 +229,7 @@ export const Nav = styled.nav`
           cursor: pointer;
         }
       }
-    `}
+    }
   `}
 `
 

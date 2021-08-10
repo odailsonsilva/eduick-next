@@ -13,12 +13,12 @@ export const Wrapper = styled.div`
     width: 27.2rem;
     height: 25.6rem;
 
-    ${media.greaterThan('medium')`
+    @media (min-width: 800px) {
       padding: 1.2rem 1.3rem;
 
       width: 36rem;
       height: 32.3rem;
-    `}
+    }
   `}
 `
 
@@ -30,12 +30,12 @@ export const WrapperImage = styled.div`
     border-radius: 4px 4px 0px 0px;
   }
 
-  ${media.greaterThan('medium')`
-      img {
-        width: 335px;
-        height: 163px;
-      }
-    `}
+  @media (min-width: 800px) {
+    img {
+      width: 335px;
+      height: 163px;
+    }
+  }
 `
 
 export const WrapperInfos = styled.div`

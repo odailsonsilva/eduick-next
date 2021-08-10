@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { FiX } from 'react-icons/fi'
 
 import { Button } from 'components/atoms/Button'
@@ -16,8 +17,12 @@ type Props = {
 }
 
 export const ModalLogin = ({ isOpen, onRequestClose }: Props) => {
+  const router = useRouter()
+
   function onRequestSignIn(event: FormEvent) {
     event.preventDefault()
+
+    router.push('/dashboard')
   }
 
   return (
