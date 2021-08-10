@@ -111,6 +111,7 @@ const modifiersWrapper = {
 
     ${WrapperItem} + ${WrapperItem} {
       margin-left: ${theme.spacings.md};
+      margin-top: 0;
     }
   `,
   column: (theme: DefaultTheme) => css`
@@ -118,6 +119,7 @@ const modifiersWrapper = {
 
     ${WrapperItem} + ${WrapperItem} {
       margin-top: ${theme.spacings.md};
+      margin-left: 0;
     }
   `
 }
