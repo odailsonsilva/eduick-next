@@ -8,7 +8,6 @@ import { Button, ThemesButton } from 'components/atoms/Button'
 import { Logo } from 'components/atoms/Logo'
 
 import * as S from './styles'
-import { useMediaQuery } from 'react-responsive'
 
 type LinksData = {
   title: string
@@ -32,9 +31,8 @@ export const Header = ({
 }: HeaderProps) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const [scrolled, setScrolled] = React.useState(false)
-  const isMobileOrTabled = useMediaQuery({ maxWidth: 767 })
 
-  // FUNÇÃO PARA CONTROLOAR O SCROLL
+  // FUNÇÃO PARA CONTROLOAR O RESIZE DA PAGINA
   function handleResize() {
     if (!(window.innerWidth > 767)) {
       setIsOpen(false)
@@ -58,11 +56,13 @@ export const Header = ({
     <S.Wrapper isOpen={isOpen} isScrolled={scrolled} id="header">
       <S.WrapperContentDesktop>
         <S.WrapperLeft isOpen={isOpen}>
-          {!isOpen && isMobileOrTabled && (
-            <S.IconWrapper onClick={() => setIsOpen(true)}>
-              <ReactSVG src="/icons/hamburger.svg" />
-            </S.IconWrapper>
-          )}
+          <MediaMatch lessThan="medium">
+            {!isOpen && (
+              <S.IconWrapper onClick={() => setIsOpen(true)}>
+                <ReactSVG src="/icons/hamburger.svg" />
+              </S.IconWrapper>
+            )}
+          </MediaMatch>
 
           <div className="wrapper__left__logo" onClick={() => setIsOpen(false)}>
             <Link href="/" passHref>
@@ -92,11 +92,13 @@ export const Header = ({
             </Button>
           </MediaMatch>
 
-          {isOpen && isMobileOrTabled && (
-            <S.ButtonClose type="button" onClick={() => setIsOpen(false)}>
-              <FiX size="24px" color="#fff" />
-            </S.ButtonClose>
-          )}
+          <MediaMatch lessThan="medium">
+            {isOpen && (
+              <S.ButtonClose type="button" onClick={() => setIsOpen(false)}>
+                <FiX size="24px" color="#fff" />
+              </S.ButtonClose>
+            )}
+          </MediaMatch>
         </S.WrapperRight>
       </S.WrapperContentDesktop>
 

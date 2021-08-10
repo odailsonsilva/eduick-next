@@ -23,7 +23,6 @@ const optionsRadio = [
 export const LandingPage = () => {
   const [open, setOpen] = React.useState(false)
   const [showModalStarted, setShowModalStarted] = React.useState(false)
-  const isTabledOrMobile = useMediaQuery({ maxWidth: 767 })
   const isMobileSmall = useMediaQuery({ maxWidth: 360 })
 
   return (
@@ -38,11 +37,13 @@ export const LandingPage = () => {
 
         <S.Container>
           <S.WrapperIllustration isOpen={open}>
-            {isTabledOrMobile ? (
+            <MediaMatch lessThan="medium">
               <img src="/illustrations/detail-mobile.svg" alt="" />
-            ) : (
+            </MediaMatch>
+
+            <MediaMatch greaterThan="medium">
               <img src="/illustrations/detail-lp-1.svg" alt="" />
-            )}
+            </MediaMatch>
           </S.WrapperIllustration>
 
           <S.WrapperForm>

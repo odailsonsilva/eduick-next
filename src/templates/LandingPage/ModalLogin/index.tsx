@@ -7,7 +7,8 @@ import Modal from 'components/atoms/Modal'
 import * as S from './styles'
 
 import { FormEvent } from 'react'
-import { useMediaQuery } from 'react-responsive'
+
+import MediaMatch from 'components/MediaMatch'
 
 type Props = {
   isOpen: boolean
@@ -15,8 +16,6 @@ type Props = {
 }
 
 export const ModalLogin = ({ isOpen, onRequestClose }: Props) => {
-  const isMobileOrTabled = useMediaQuery({ maxWidth: 767 })
-
   function onRequestSignIn(event: FormEvent) {
     event.preventDefault()
   }
@@ -30,13 +29,11 @@ export const ModalLogin = ({ isOpen, onRequestClose }: Props) => {
             <br /> <span>Just Login</span>
           </h1>
 
-          {isMobileOrTabled && (
-            <div>
-              <button type="button" onClick={onRequestClose}>
-                <FiX size="24px" color="#fff" />
-              </button>
-            </div>
-          )}
+          <MediaMatch lessThan="medium">
+            <button type="button" onClick={onRequestClose}>
+              <FiX size="24px" color="#fff" />
+            </button>
+          </MediaMatch>
         </div>
 
         <S.Form onSubmit={onRequestSignIn}>
