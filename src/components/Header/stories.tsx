@@ -12,7 +12,11 @@ const linksHeader = [
 ]
 
 export const Basic: Story<HeaderProps> = (args) => (
-  <Header links={linksHeader} buttonText="Get Started" />
+  <Header
+    onClick={() => console.log('click')}
+    links={linksHeader}
+    buttonText="Get Started"
+  />
 )
 Basic.parameters = {
   backgrounds: {
