@@ -12,8 +12,8 @@ function App({ Component, pageProps }: AppProps) {
         <title>Eduick</title>
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <Component {...pageProps} />
       <GlobalStyles />
+      <Component {...pageProps} />
     </ThemeProvider>
   )
 }
