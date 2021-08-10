@@ -125,6 +125,11 @@ export const WrapperForm = styled.div`
       margin: 6rem 0;
     }
 
+    ${media.greaterThan('medium')`
+      padding: 0;
+      margin-top: 6rem;
+    `}
+
     ${media.greaterThan('large')`
       order: 0;
 
