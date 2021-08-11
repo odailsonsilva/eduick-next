@@ -2,10 +2,18 @@ import Image from 'next/image'
 
 import * as S from './styles'
 
-export const Avatar = () => {
+export type AvatarProps = {
+  size?: 'small' | 'large'
+  src?: string
+}
+
+export const Avatar = ({
+  size = 'small',
+  src = '/images/profile.png'
+}: AvatarProps) => {
   return (
-    <S.Wrapper>
-      <img src="/images/profile.png" />
+    <S.Wrapper size={size}>
+      <img src={src} />
     </S.Wrapper>
   )
 }

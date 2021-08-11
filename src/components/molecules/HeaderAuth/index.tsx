@@ -10,6 +10,8 @@ import * as S from './styles'
 import { useMediaQuery } from 'react-responsive'
 import { Avatar } from 'components/atoms/Avatar'
 import { useAuth } from 'services/hooks/useAuth'
+import { ModalProfile } from './ModalProfile'
+import { useSession } from 'next-auth/client'
 
 type LinksData = {
   title: string
@@ -31,9 +33,12 @@ export const HeaderAuth = ({
   buttonText,
   onClick
 }: HeaderProps) => {
+  const [session] = useSession()
   const [isOpen, setIsOpen] = React.useState(false)
   const [scrolled, setScrolled] = React.useState(false)
+  const [showModal, setShowModal] = React.useState(false)
   const isMobileOrTablet = useMediaQuery({ maxWidth: 767 })
+  const [user, setUser] = React.useState<any>({})
   const { signOut } = useAuth()
 
   const refElement = React.useRef<any>(null)
@@ -58,6 +63,12 @@ export const HeaderAuth = ({
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [refElement])
+
+  React.useEffect(() => {
+    if (session !== undefined) {
+      setUser(session?.user)
+    }
+  }, [session])
 
   return (
     <S.Wrapper isOpen={isOpen} isScrolled={scrolled} id="header">
@@ -113,7 +124,20 @@ export const HeaderAuth = ({
               </button>
             </MediaMatch>
 
-            <Avatar />
+            <MediaMatch lessThan="medium">
+              <Avatar src={user?.image} />
+            </MediaMatch>
+
+            <MediaMatch greaterThan="medium">
+              <S.WrapperAvatar onClick={() => setShowModal(!showModal)}>
+                <Avatar src={user?.image} />
+              </S.WrapperAvatar>
+
+              <ModalProfile
+                isOpen={showModal}
+                onRequestClose={() => setShowModal(!showModal)}
+              />
+            </MediaMatch>
           </S.WrapperRight>
         </S.WrapperContentDesktop>
 

@@ -1,6 +1,6 @@
 import * as S from './styles'
 
-export type ThemesButton = 'primary' | 'secondary'
+export type ThemesButton = 'primary' | 'secondary' | 'danger'
 
 export type ButtonProps = {
   children: React.ReactNode

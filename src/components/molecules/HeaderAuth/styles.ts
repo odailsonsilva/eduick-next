@@ -233,6 +233,10 @@ export const Nav = styled.nav`
   `}
 `
 
+export const WrapperAvatar = styled.div`
+  cursor: pointer;
+`
+
 export const WrapperRight = styled.div`
   display: flex;
   align-items: center;

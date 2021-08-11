@@ -10,6 +10,10 @@ const modifiersTheme = {
   secondary: (theme: DefaultTheme) => css`
     background: ${transparentize(0.7, theme.colors.purple[900])};
     color: ${theme.colors.white[500]};
+  `,
+  danger: (theme: DefaultTheme) => css`
+    background: #f44336;
+    color: ${theme.colors.white[500]};
   `
 }
 
