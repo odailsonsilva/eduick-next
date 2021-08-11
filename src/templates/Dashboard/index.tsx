@@ -20,14 +20,14 @@ export const Dashboard = () => {
   const [courses, setCourses] = React.useState<Course[]>([])
 
   /**
-   * CRIAR UMA MANEIRA DE OBSERVAR AS ALTERACOES DO ULTIMO ELEMENTO RETORNANDO
+   * OBSERVAR AS ALTERACOES DO ULTIMO ELEMENTO (div invisivel)
+   * ATUALIZA O STATE PAGE E FAZ A CHAMADA A API
    */
   const lastElementRef = React.useCallback(
     (node) => {
       if (isLoading) return
 
       if (observer.current) observer.current.disconnect()
-
       observer.current = new IntersectionObserver((entries) => {
         console.log('efedfa1', entries[0])
 
@@ -75,8 +75,7 @@ export const Dashboard = () => {
           {courses.map((item, index) => {
             if (courses.length === index + 1) {
               /**
-               * CASO SEJA ULTIMO ELEMENTO CRIA UMA DIV COM O LASTELEMENT DENTRO DO GRID
-               * CONTÉM E PERMITE ACIONAR A CHAMA A API
+               * CASO SEJA ULTIMO ELEMENTO CRIA UMA DIV COM A REF(LASTELEMENT) DENTRO DO GRID
                */
 
               return (
