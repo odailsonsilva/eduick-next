@@ -81,13 +81,13 @@ O layout da aplicação está disponível no Figma: https://www.figma.com/file/v
 
   ### MenuBurguer
 
-  <img alt="lista de pedidos" title="#orders-list" src="./print_pages/print-2.PNG" width="1200px">
+  <img alt="lista de pedidos" title="#orders-list" src="./print_pages/print-2.PNG" width="350px">
 
   #
 
   ### Login/Login Social
 
-  <img alt="Detalhes de pedidos" title="#order-details" src="./print_pages/print-3.PNG" width="1200px">
+  <img alt="Detalhes de pedidos" title="#order-details" src="./print_pages/print-3.PNG" width="350px">
 
   <img alt="Detalhes de pedidos" title="#order-details" src="./print_pages/print-3.1.PNG" width="1200px">
 
@@ -102,7 +102,7 @@ O layout da aplicação está disponível no Figma: https://www.figma.com/file/v
 
   ### Dropdown
 
-  <img alt="Informações do pedido" title="#user-order" src="./print_pages/print-6.PNG" width="1200px">
+  <img alt="Informações do pedido" title="#user-order" src="./print_pages/print-6.PNG" width="350px">
 
   #
 
