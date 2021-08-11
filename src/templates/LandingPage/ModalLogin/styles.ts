@@ -74,3 +74,86 @@ export const Form = styled.form`
     }
   `}
 `
+
+export const Divider = styled.div`
+  ${({ theme }) => css`
+    margin: 2.4rem 0;
+
+    > p {
+      font-size: 1.4rem;
+      color: ${theme.colors.white[500]};
+
+      position: relative;
+      width: 100%;
+
+      text-align: center;
+
+      &::before {
+        content: '';
+        width: 45%;
+        height: 1px;
+
+        position: absolute;
+        left: 0;
+        top: 10px;
+
+        background: ${theme.colors.white[500]};
+      }
+
+      &::after {
+        content: '';
+        width: 45%;
+        height: 1px;
+
+        position: absolute;
+        right: 0;
+        top: 10px;
+
+        background: ${theme.colors.white[500]};
+      }
+    }
+  `}
+`
+
+export const BTNGitHub = styled.button`
+  ${({ theme }) => css`
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 4.8rem;
+
+    font-size: 1.4rem;
+    font-weight: bold;
+
+    border: none;
+    border-radius: 0.4rem;
+
+    padding: 1.4rem 4.4rem;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    background: ${theme.colors.white[500]};
+
+    span {
+      margin-left: 0.8rem;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+
+    &:active {
+      filter: brightness(1);
+    }
+  `}
+`

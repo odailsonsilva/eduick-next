@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router'
 import { FiX } from 'react-icons/fi'
+import { FaGithub } from 'react-icons/fa'
+import { signIn } from 'next-auth/client'
 
 import { Button } from 'components/atoms/Button'
 import { Input } from 'components/atoms/Input'
@@ -54,6 +56,15 @@ export const ModalLogin = ({ isOpen, onRequestClose }: Props) => {
             <Button type="submit">LOGIN</Button>
           </div>
         </S.Form>
+
+        <S.Divider>
+          <p>or</p>
+        </S.Divider>
+
+        <S.BTNGitHub type="button" onClick={() => signIn()}>
+          <FaGithub size="24px" />
+          <span>LOGIN WITH GITHUB</span>
+        </S.BTNGitHub>
       </S.Wrapper>
     </Modal>
   )
