@@ -24,6 +24,43 @@ export const Container = styled.div`
   `}
 `
 
+export const ContainerLoading = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20rem;
+  height: 20rem;
+
+  margin: 3rem auto;
+
+  ${media.lessThan('medium')`
+    width: 12rem;
+    height: 12rem;
+  `}
+`
+
+export const ContainerNotData = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 3rem auto;
+
+    img {
+      width: 20rem;
+      height: 20rem;
+    }
+
+    h2 {
+      font-size: 2.1rem;
+      color: ${theme.colors.purple[900]};
+    }
+  `}
+`
+
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);

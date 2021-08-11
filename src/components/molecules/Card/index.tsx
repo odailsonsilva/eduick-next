@@ -1,4 +1,10 @@
 import { RatingStars } from 'components/atoms/RatingStars'
+import {
+  forwardRef,
+  ForwardRefRenderFunction,
+  ReactElement,
+  ReactNode
+} from 'react'
 import * as S from './styles'
 
 export type CardProps = {
@@ -8,9 +14,12 @@ export type CardProps = {
   title: string
 }
 
-export const Card = ({ image, rating, lessionsTotal, title }: CardProps) => {
+const CardBase: ForwardRefRenderFunction<HTMLDivElement, CardProps> = (
+  { image, rating, lessionsTotal, title },
+  ref
+) => {
   return (
-    <S.Wrapper>
+    <S.Wrapper ref={ref}>
       <S.WrapperImage>
         <img src={image} alt={title} />
       </S.WrapperImage>
@@ -33,3 +42,5 @@ export const Card = ({ image, rating, lessionsTotal, title }: CardProps) => {
     </S.Wrapper>
   )
 }
+
+export const Card = forwardRef(CardBase)

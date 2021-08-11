@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query'
 import { api } from '../api'
 
-type Course = {
+export type Course = {
   id: string
   title: string
   image: string
