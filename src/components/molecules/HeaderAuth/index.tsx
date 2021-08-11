@@ -9,6 +9,7 @@ import { Logo } from 'components/atoms/Logo'
 import * as S from './styles'
 import { useMediaQuery } from 'react-responsive'
 import { Avatar } from 'components/atoms/Avatar'
+import { useAuth } from 'services/hooks/useAuth'
 
 type LinksData = {
   title: string
@@ -33,6 +34,7 @@ export const HeaderAuth = ({
   const [isOpen, setIsOpen] = React.useState(false)
   const [scrolled, setScrolled] = React.useState(false)
   const isMobileOrTablet = useMediaQuery({ maxWidth: 767 })
+  const { signOut } = useAuth()
 
   const refElement = React.useRef<any>(null)
 
@@ -127,10 +129,7 @@ export const HeaderAuth = ({
                   <FiArrowRight color="#2E3A59" size="16px" />
                 </li>
 
-                <li
-                  className="list__item--logout"
-                  onClick={() => setIsOpen(false)}
-                >
+                <li className="list__item--logout" onClick={() => signOut()}>
                   <Link href="/" passHref>
                     LOGOUT
                   </Link>

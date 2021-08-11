@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'development') {
   makeServer()
 }
 
-function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <NextAuthProvider session={pageProps.session}>
@@ -41,5 +41,3 @@ function App({ Component, pageProps }: AppProps) {
     </QueryClientProvider>
   )
 }
-
-export default App

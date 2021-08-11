@@ -1,8 +1,8 @@
 import router from 'next/router'
-import { useSession } from 'next-auth/client'
+import { useSession, signOut as signOutNextAuth } from 'next-auth/client'
 import { createContext, ReactNode, useContext, useState } from 'react'
 
-import { setCookie, parseCookies } from 'nookies'
+import { setCookie, parseCookies, destroyCookie } from 'nookies'
 import { useEffect } from 'react'
 import { toast } from 'react-toastify'
 
@@ -11,10 +11,13 @@ type Props = {
 }
 
 type User = {
-  github: {
+  github?: {
     email: string | null | undefined
     image: string | null | undefined
     name: string | null | undefined
+  }
+  tokenEduick: {
+    user: string
   }
 }
 
@@ -28,6 +31,7 @@ type AuthContextData = {
   isAuthenticated: boolean
   isLoading: boolean
   errors: SignInCredentials
+  signOut(): void
 }
 
 const AuthContext = createContext({} as AuthContextData)
@@ -35,10 +39,18 @@ const AuthContext = createContext({} as AuthContextData)
 export function AuthProvider({ children }: Props) {
   const [session] = useSession()
 
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUsers] = useState<User>()
   const [isLoading, setIsLoading] = useState(false)
   const [errors, setErrors] = useState({} as SignInCredentials)
-  const isAuthenticated = !!user
+
+  function redirectCookie() {
+    if (isAuthenticated) {
+      router.push('/dashboard')
+    } else {
+      router.push('/')
+    }
+  }
 
   async function signIn({ email, password }: SignInCredentials) {
     setIsLoading(true)
@@ -49,8 +61,6 @@ export function AuthProvider({ children }: Props) {
 
     await new Promise((resolve) => setTimeout(resolve, 2000))
 
-    console.log('hook', { email, password })
-
     if (email === 'user@eduick.com' && password === 'Teste123@') {
       const token = 'açlasjdlasjdasdlajs'
 
@@ -59,7 +69,10 @@ export function AuthProvider({ children }: Props) {
         path: '/'
       })
 
-      router.push('/dashboard')
+      setTimeout(() => {
+        const { 'eduick.token': tokenS } = parseCookies()
+        if (tokenS) router.push('/dashboard')
+      }, 1000)
     } else {
       toast('Invalid credentials', {
         position: 'top-center',
@@ -78,34 +91,26 @@ export function AuthProvider({ children }: Props) {
     setIsLoading(false)
   }
 
+  function signOut() {
+    if (session) {
+      return signOutNextAuth()
+    } else {
+      destroyCookie(undefined, 'eduick.token')
+      setUsers({} as any)
+
+      setTimeout(() => {
+        router.push('/')
+      }, 1000)
+    }
+  }
+
   /**
    * VERIFICA SE EXISTE SESSION (COOKIES) COM LOGIN SOCIAL
    */
 
-  useEffect(() => {
-    if (session !== undefined) {
-      setUsers({
-        github: {
-          email: session?.user?.email,
-          image: session?.user?.image,
-          name: session?.user?.name
-        }
-      })
-    }
-  }, [session])
-
-  useEffect(() => {
-    const { 'eduick.token': token } = parseCookies()
-
-    if (token) {
-      // buscar as info atualizadas do usuario
-      // salvar as informacoes atualizadas
-    }
-  }, [])
-
   return (
     <AuthContext.Provider
-      value={{ signIn, isAuthenticated, isLoading, errors }}
+      value={{ signIn, isAuthenticated, isLoading, errors, signOut }}
     >
       {children}
     </AuthContext.Provider>
