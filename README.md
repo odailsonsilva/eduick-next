@@ -75,39 +75,40 @@ O layout da aplicação está disponível no Figma: https://www.figma.com/file/v
 
   ### LandingPage
 
-  <img alt="login" title="#login" src="./src/print_pages/print-1.PNG" width="1200px">
+  <img alt="login" title="#login" src="./print_pages/print-1.PNG" width="1200px">
 
   #
 
   ### MenuBurguer
 
-  <img alt="lista de pedidos" title="#orders-list" src="./src/print_pages/print-2.PNG" width="1200px">
+  <img alt="lista de pedidos" title="#orders-list" src="./print_pages/print-2.PNG" width="1200px">
 
   #
 
   ### Login/Login Social
 
-  <img alt="Detalhes de pedidos" title="#order-details" src="./src/print_pages/print-3.PNG" width="1200px">
-  <img alt="Detalhes de pedidos" title="#order-details" src="./src/print_pages/print-3.1.PNG" width="1200px">
+  <img alt="Detalhes de pedidos" title="#order-details" src="./print_pages/print-3.PNG" width="1200px">
+
+  <img alt="Detalhes de pedidos" title="#order-details" src="./print_pages/print-3.1.PNG" width="1200px">
 
   #
 
   ### Dashboard
 
-  <img alt="Novo pedido" title="#new-order" src="./src/print_pages/print-4.PNG" width="1200px">
+  <img alt="Novo pedido" title="#new-order" src="./print_pages/print-4.PNG" width="1200px">
 
   #
 
 
   ### Dropdown
 
-  <img alt="Informações do pedido" title="#user-order" src="./src/print_pages/print-6.PNG" width="1200px">
+  <img alt="Informações do pedido" title="#user-order" src="./print_pages/print-6.PNG" width="1200px">
 
   #
 
   ### Modal Profile
 
-  <img alt="Feedback do Pedido" title="#feedback-order" src="./src/print_pages/print-5.PNG" width="1200px">
+  <img alt="Feedback do Pedido" title="#feedback-order" src="./print_pages/print-5.PNG" width="1200px">
 
 </p>
 
