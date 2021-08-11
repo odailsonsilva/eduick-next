@@ -7,6 +7,7 @@ import { ContainerInfos } from './ContainerInfos'
 import * as S from './styles'
 import { Course, useCourses } from 'services/hooks/useCourses'
 import { Loading } from 'components/atoms/Loading'
+import Image from 'next/image'
 
 const linksHeader = [{ title: 'My Classes', href: '/' }]
 
@@ -65,7 +66,12 @@ export const Dashboard = () => {
         <>
           {!isLoading && (courses.length === 0 || error) && (
             <S.ContainerNotData>
-              <img src="/illustrations/not-found.svg" alt="" />
+              <Image
+                src="/illustrations/not-found.svg"
+                alt="Not found image"
+                layout="fill"
+                objectFit="cover"
+              />
               <h2>No courses found</h2>
             </S.ContainerNotData>
           )}

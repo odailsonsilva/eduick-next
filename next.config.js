@@ -7,5 +7,8 @@ module.exports = withPWA({
   pwa: {
     dest: 'public',
     disable: !isProd
+  },
+  images: {
+    domains: ['localhost', 'placeimg.com', 'avatars.githubusercontent.com']
   }
 })

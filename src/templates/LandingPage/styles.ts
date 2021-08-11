@@ -99,6 +99,11 @@ export const WrapperIllustration = styled.div<ContainerProps>`
 
     transition: position 1s ease;
 
+    position: relative;
+
+    max-height: 919px;
+    max-width: 678px;
+
     display: ${isOpen ? 'none' : 'flex'};
 
     ${media.greaterThan('large')`

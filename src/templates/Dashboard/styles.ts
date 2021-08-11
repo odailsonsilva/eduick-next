@@ -47,12 +47,12 @@ export const ContainerNotData = styled.div`
     align-items: center;
     justify-content: center;
 
+    position: relative;
+
     margin: 3rem auto;
 
-    img {
-      width: 20rem;
-      height: 20rem;
-    }
+    width: 20rem;
+    height: 20rem;
 
     h2 {
       font-size: 2.1rem;
