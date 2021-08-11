@@ -1,7 +1,12 @@
 import { useRouter } from 'next/router'
 import { FiX } from 'react-icons/fi'
 import { FaGithub } from 'react-icons/fa'
-import { signIn } from 'next-auth/client'
+import { signIn as signInNextAuth } from 'next-auth/client'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+
+import { useAuth } from 'services/hooks/useAuth'
 
 import { Button } from 'components/atoms/Button'
 import { Input } from 'components/atoms/Input'
@@ -18,13 +23,38 @@ type Props = {
   onRequestClose: () => void
 }
 
+type SignInData = {
+  email: string
+  password: string
+}
+
+const signInFormSchema = yup.object().shape({
+  email: yup.string().required('E-mail is required').email('Invalid e-mail'),
+  password: yup
+    .string()
+    .min(8)
+    .max(20)
+    .required('Password is required')
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+      'Password must have at least 8 characters, one uppercase, one lowercase and one number'
+    )
+})
+
 export const ModalLogin = ({ isOpen, onRequestClose }: Props) => {
   const router = useRouter()
+  const { isLoading, signIn, errors } = useAuth()
+  const { register, handleSubmit, formState } = useForm({
+    resolver: yupResolver(signInFormSchema)
+  })
 
-  function onRequestSignIn(event: FormEvent) {
-    event.preventDefault()
+  const onRequestSignIn: SubmitHandler<SignInData> = async (values) => {
+    const { email, password } = values
 
-    router.push('/dashboard')
+    await signIn({
+      email,
+      password
+    })
   }
 
   return (
@@ -43,17 +73,28 @@ export const ModalLogin = ({ isOpen, onRequestClose }: Props) => {
           </MediaMatch>
         </div>
 
-        <S.Form onSubmit={onRequestSignIn}>
+        <S.Form onSubmit={handleSubmit(onRequestSignIn)}>
           <div className="form__input">
-            <Input label="Username:" />
+            <Input
+              label="Username:"
+              errors={formState.errors?.email?.message || errors.email}
+              {...register('email')}
+            />
           </div>
 
           <div className="form__input">
-            <Input label="Password:" isPassword />
+            <Input
+              label="Password:"
+              isPassword
+              errors={formState.errors?.password?.message || errors.password}
+              {...register('password')}
+            />
           </div>
 
           <div className="form__button">
-            <Button type="submit">LOGIN</Button>
+            <Button type="submit" disabled={isLoading && !!formState.errors}>
+              LOGIN
+            </Button>
           </div>
         </S.Form>
 
@@ -61,7 +102,7 @@ export const ModalLogin = ({ isOpen, onRequestClose }: Props) => {
           <p>or</p>
         </S.Divider>
 
-        <S.BTNGitHub type="button" onClick={() => signIn()}>
+        <S.BTNGitHub type="button" onClick={() => signInNextAuth()}>
           <FaGithub size="24px" />
           <span>LOGIN WITH GITHUB</span>
         </S.BTNGitHub>

@@ -27,7 +27,13 @@ export const InputStyled = styled.input`
   `}
 `
 
-export const Errors = styled.div``
+export const Errors = styled.div`
+  ${({ theme }) => css`
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
+    color: #f44336;
+  `}
+`
 
 export const WrapperInput = styled.div`
   ${({ theme }) => css`
@@ -60,15 +66,15 @@ export const WrapperInput = styled.div`
 `
 
 type InputStyledProps = {
-  isFocused: boolean
+  error: boolean
 }
 
 export const Wrapper = styled.main<InputStyledProps>`
-  ${({ theme, isFocused }) => css`
-    ${isFocused &&
+  ${({ error }) => css`
+    ${error &&
     css`
-      ${InputStyled} {
-        border-color: ${theme.colors.purple[900]};
+      ${WrapperInput} {
+        border-color: #f44336;
       }
     `}
   `}

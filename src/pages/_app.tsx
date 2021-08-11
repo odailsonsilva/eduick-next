@@ -5,11 +5,14 @@ import { ThemeProvider } from 'styled-components'
 import { Provider as NextAuthProvider } from 'next-auth/client'
 import { QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import { ToastContainer } from 'react-toastify'
 
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
 import { queryClient } from 'services/queryClient'
 import { AuthProvider } from 'services/hooks/useAuth'
+
+import 'react-toastify/dist/ReactToastify.css'
 
 //INICIALIZANDO O MIRAGE JS
 if (process.env.NODE_ENV === 'development') {
@@ -28,6 +31,8 @@ function App({ Component, pageProps }: AppProps) {
             </Head>
             <GlobalStyles />
             <Component {...pageProps} />
+
+            <ToastContainer />
           </ThemeProvider>
         </AuthProvider>
 

@@ -5,16 +5,17 @@ import { createContext, ReactNode, useContext, useState } from 'react'
 import { setCookie, parseCookies } from 'nookies'
 import { useEffect } from 'react'
 import { toast } from 'react-toastify'
-import { api } from 'services/api'
 
 type Props = {
   children: ReactNode
 }
 
 type User = {
-  email: string
-  permissions: string[]
-  roles: string[]
+  github: {
+    email: string | null | undefined
+    image: string | null | undefined
+    name: string | null | undefined
+  }
 }
 
 type SignInCredentials = {
@@ -25,6 +26,8 @@ type SignInCredentials = {
 type AuthContextData = {
   signIn(credentials: SignInCredentials): Promise<void>
   isAuthenticated: boolean
+  isLoading: boolean
+  errors: SignInCredentials
 }
 
 const AuthContext = createContext({} as AuthContextData)
@@ -34,13 +37,21 @@ export function AuthProvider({ children }: Props) {
 
   const [user, setUsers] = useState<User>()
   const [isLoading, setIsLoading] = useState(false)
+  const [errors, setErrors] = useState({} as SignInCredentials)
   const isAuthenticated = !!user
 
   async function signIn({ email, password }: SignInCredentials) {
     setIsLoading(true)
+    setErrors({
+      email: '',
+      password: ''
+    })
+
     await new Promise((resolve) => setTimeout(resolve, 2000))
 
-    if (email === 'username' && password === 'Teste123@') {
+    console.log('hook', { email, password })
+
+    if (email === 'user@eduick.com' && password === 'Teste123@') {
       const token = 'açlasjdlasjdasdlajs'
 
       setCookie(undefined, 'eduick.token', token, {
@@ -57,13 +68,30 @@ export function AuthProvider({ children }: Props) {
         closeOnClick: false,
         type: 'error'
       })
+
+      setErrors({
+        email: 'Check your email',
+        password: 'Check your password'
+      })
     }
 
     setIsLoading(false)
   }
 
+  /**
+   * VERIFICA SE EXISTE SESSION (COOKIES) COM LOGIN SOCIAL
+   */
+
   useEffect(() => {
-    console.log('session', session)
+    if (session !== undefined) {
+      setUsers({
+        github: {
+          email: session?.user?.email,
+          image: session?.user?.image,
+          name: session?.user?.name
+        }
+      })
+    }
   }, [session])
 
   useEffect(() => {
@@ -76,7 +104,9 @@ export function AuthProvider({ children }: Props) {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ signIn, isAuthenticated }}>
+    <AuthContext.Provider
+      value={{ signIn, isAuthenticated, isLoading, errors }}
+    >
       {children}
     </AuthContext.Provider>
   )
