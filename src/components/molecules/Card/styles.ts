@@ -80,6 +80,12 @@ export const WrapperName = styled.div`
       font-weight: 600;
 
       color: ${theme.colors.purple[900]};
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
 
     ${media.greaterThan('medium')`

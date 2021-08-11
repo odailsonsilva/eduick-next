@@ -4,56 +4,15 @@ import { HeaderAuth } from 'components/molecules/HeaderAuth'
 import { ContainerInfos } from './ContainerInfos'
 
 import * as S from './styles'
+import { useCourses } from 'services/hooks/useCourses'
 
 const linksHeader = [{ title: 'My Classes', href: '/' }]
 
-const mockCard = [
-  {
-    image:
-      'https://images.unsplash.com/photo-1580894732930-0babd100d356?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-    rating: 3,
-    lessionsTotal: 10,
-    title: 'Master English: Improve Your Speaking'
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1580894732930-0babd100d356?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-    rating: 3,
-    lessionsTotal: 10,
-    title: 'Master English: Improve Your Speaking'
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1580894732930-0babd100d356?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-    rating: 3,
-    lessionsTotal: 10,
-    title: 'Master English: Improve Your Speaking'
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1580894732930-0babd100d356?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-    rating: 3,
-    lessionsTotal: 10,
-    title: 'Master English: Improve Your Speaking'
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1580894732930-0babd100d356?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-    rating: 3,
-    lessionsTotal: 10,
-    title: 'Master English: Improve Your Speaking'
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1580894732930-0babd100d356?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-    rating: 3,
-    lessionsTotal: 10,
-    title: 'Master English: Improve Your Speaking'
-  }
-]
-
 export const Dashboard = () => {
   const [open, setOpen] = React.useState(false)
+  const [page, setPage] = React.useState(1)
+
+  const { isLoading, data, isFetched, error } = useCourses(page)
 
   return (
     <S.Wrapper>
@@ -71,8 +30,12 @@ export const Dashboard = () => {
         <ContainerInfos />
 
         <S.Grid>
-          {mockCard.map((item, index) => (
-            <Card key={index} {...item} />
+          {data?.courses.map((item, index) => (
+            <Card
+              key={index}
+              {...item}
+              lessionsTotal={item['lessions_total']}
+            />
           ))}
         </S.Grid>
       </S.Container>

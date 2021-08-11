@@ -31,11 +31,11 @@ export function makeServer() {
 
     factories: {
       course: Factory.extend({
-        title(i: number) {
-          return faker.name.jobArea()
+        title() {
+          return faker.lorem.sentences()
         },
         image() {
-          return faker.image.business()
+          return faker.image.image()
         },
         lessionsTotal() {
           return Math.floor(Math.random() * (50 - 1)) + 1
@@ -55,7 +55,7 @@ export function makeServer() {
 
     routes() {
       this.namespace = 'api'
-      this.timing = 1000
+      this.timing = 2000
 
       /**
        * Cria a rota atraves do Shorthands (automatiza criacao de rotas)
@@ -70,12 +70,16 @@ export function makeServer() {
         const pageStart = (Number(page) - 1) * Number(per_page)
         const pageEnd = pageStart + Number(per_page)
 
-        const users = this.serialize(schema.all('course')).courses.slice(
+        const courses = this.serialize(schema.all('course')).courses.slice(
           pageStart,
           pageEnd
         )
 
-        return new Response(200, { 'x-total-count': String(total) }, { users })
+        return new Response(
+          200,
+          { 'x-total-count': String(total) },
+          { courses }
+        )
       })
 
       this.namespace = ''
