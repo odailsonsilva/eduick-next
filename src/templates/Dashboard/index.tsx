@@ -85,10 +85,7 @@ export const Dashboard = () => {
                     {...item}
                     lessionsTotal={item['lessions_total']}
                   />
-                  <div
-                    ref={lastElementRef}
-                    style={{ width: 1, height: 1, opacity: 0 }}
-                  />
+                  <div ref={lastElementRef} />
                 </>
               )
             } else {

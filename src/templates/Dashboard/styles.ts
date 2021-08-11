@@ -32,7 +32,7 @@ export const ContainerLoading = styled.div`
   width: 20rem;
   height: 20rem;
 
-  margin: 3rem auto;
+  margin: 2rem auto;
 
   ${media.lessThan('medium')`
     width: 12rem;
