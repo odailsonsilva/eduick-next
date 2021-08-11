@@ -41,7 +41,7 @@ Tabela de conteúdos
 
 ## 💻 Sobre o projeto
 
-Desenvolvido com NextJs e Typescript. Contém uma fake api, MirajeJs. Focado nas melhores práticas de programação, visando a manutenibilidade, teste e documentação.
+Desenvolvido com NextJs e Typescript. Contém uma fake api, MirageJs. Focado nas melhores práticas de programação, visando a manutenibilidade, teste e documentação.
 
 
 
@@ -56,7 +56,7 @@ Desenvolvido com NextJs e Typescript. Contém uma fake api, MirajeJs. Focado nas
   - [x] Usabilidade de formulário e autenticação (React Hook Form, Yup e SSR)
   - [x] Login social com GitHub (NextAuth)
 - [x] Dashboard (Rota privada);
-  - [x] Adicionar requisição para trazer lista de cursos (MirajeJs);
+  - [x] Adicionar requisição para trazer lista de cursos (MirageJs);
   - [x] Implementar scroll infinito ou paginação;
   - [x] Na versão mobile implementar ação de dropdown (onde aparece change to teacher mode);
 ---
@@ -182,6 +182,9 @@ Principais dependências usadas no projeto:
 -   **[Prettier](https://prettier.io/)**
 -   **[Eslint](https://eslint.org/)**
 -   **[Plop](https://plopjs.com/)**
+-   **[Axios](https://github.com/axios/axios)**
+-   **[React query](https://react-query.tanstack.com/)**
+-   **[Mirage](https://miragejs.com/)**
 
 
 > Veja o arquivo  [package.json](https://github.com/odailsonsilva/eduick-next/blob/dev/package.json)
