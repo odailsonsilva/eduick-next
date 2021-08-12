@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> Changes its value when typing 1`] = `
+.c0 {
+  font-size: 1.6rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.c2 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 5.4rem;
+  font-size: 1.6rem;
+  color: #ffffff;
+  background: transparent;
+  border: none;
+}
+
+.c2::-webkit-input-placeholder {
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+
+.c2::-moz-placeholder {
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+
+.c2:-ms-input-placeholder {
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+
+.c2::placeholder {
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+
+.c1 {
+  border: 1px solid #A68EEF;
+  border-radius: 0.4rem;
+  height: 5.6rem;
+  width: 100%;
+  padding: 1.2rem 1.6rem 1.2rem 2.8rem;
+  background: #7955E8;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 div.wrapper__input__icon {
+  margin-top: 4px;
+  margin-left: 0.8rem;
+  cursor: pointer;
+}
+
+@media (max-width:768px) {
+  .c1 {
+    padding: 1rem 2.2rem 1rem 2.2rem;
+  }
+}
+
+<div
+  class=""
+>
+  <label
+    class="c0"
+    for="label"
+  >
+    label
+  </label>
+  <div
+    class="c1"
+  >
+    <input
+      class="c2"
+      id="label"
+      name="label"
+      type="text"
+    />
+  </div>
+</div>
+`;

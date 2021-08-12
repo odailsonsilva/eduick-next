@@ -25,7 +25,7 @@ describe('<Input />', () => {
     it('Changes its value when typing', async () => {
       const onInputChange = jest.fn()
 
-      renderWithTheme(
+      const { container } = renderWithTheme(
         <Input
           label="label"
           type="text"
@@ -37,5 +37,7 @@ describe('<Input />', () => {
       const input = screen.getByRole('textbox')
       fireEvent.change(input, { target: { value: '23' } })
       expect(input.value).toBe('23')
+
+      expect(container.firstChild).toMatchSnapshot()
     })
 })

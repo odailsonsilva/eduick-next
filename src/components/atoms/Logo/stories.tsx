@@ -3,7 +3,15 @@ import { Logo, LogoProps } from '.'
 
 export default {
   title: 'Logo',
-  component: Logo
+  component: Logo,
+  argTypes: {
+    activedDetails: {
+      description: 'Ativa/desativa detalhe do lado esquerdo da logo',
+      control: {
+        type: 'boolean'
+      }
+    }
+  }
 } as Meta
 
 export const Basic: Story = () => <Logo />
