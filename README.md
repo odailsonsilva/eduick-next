@@ -7,19 +7,17 @@
 </h3>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/odailsonsilva/Appetit?color=%2304D361">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/odailsonsilvaeduick-next?color=%2304D361">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/odailsonsilva/Appetit">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/odailsonsilvaeduick-next">
 
   <!-- <a href="https://www.twitter.com/tgmarinho/">
     <img alt="Siga no Twitter" src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Ftgmarinho%2FREADME-ecoleta">
   </a> -->
 
   <a href="https://github.com/tgmarinho/README-ecoleta/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/odailsonsilva/Appetit">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/odailsonsilvaeduick-next">
   </a>
-
-   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
 
 </p>
 
@@ -59,6 +57,13 @@ Desenvolvido com NextJs e Typescript. Contém uma fake api, MirageJs. Focado nas
   - [x] Adicionar requisição para trazer lista de cursos (MirageJs);
   - [x] Implementar scroll infinito ou paginação;
   - [x] Na versão mobile implementar ação de dropdown (onde aparece change to teacher mode);
+- [x] Teste Unitários;
+- [x] Html Semântico;
+- [x] CSS bem estruturado;
+- [x] Comentar o código, quando necessário, para explicar a intenção de trechos complexos;
+- [x] Escrever um bom README explicando como instalar e executar o projeto;
+- [x] Otimização dos assets (Image);
+- [x] Utilizar Next.js ou CRA (SSR usado para autenticação);
 ---
 
 ## 🎨 Layout
@@ -217,4 +222,4 @@ Principais dependências usadas no projeto:
 
 Este projeto esta sobe a licença [MIT](./LICENSE).
 
-Feito com ❤️ por Odailson 👋🏽 [Entre em contato!](https://www.linkedin.com/in/tgmarinho/)
+Feito com ❤️ por Odailson 👋🏽 [Entre em contato!](https://www.linkedin.com/in/odailson-silva-2564051a0/)
