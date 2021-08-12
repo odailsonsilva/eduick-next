@@ -151,6 +151,12 @@ $ yarn dev
 
 $ npm run dev
 
+## Comandos para build
+$ yarn build
+
+# DEPOIS
+$ yarn start
+
 ## OBS: CASO QUEIRA TESTAR A PARTE DE LOGIN SOCIAL, PRECISARÁ FAZER A CONFIGURAÇÃO ABAIXO
 ## CRIAR UM ARQUVIO COM NOVO .ENV.LOCAL E DENTRO COLOCAR CLIENT_ID E O SECRET
 ## EXISTE UM ARQUIVO NA RAIZ DO PROJETO CHAMADO .ENV.LOCAL.EXAMPLE, USE-O COMO BASE PARA CRIAR SEU ARQUIVO
@@ -179,17 +185,17 @@ Principais dependências usadas no projeto:
 
 #### **Website**  ([Next](https://nextjs.org/)  +  [Typescript](https://www.typescriptlang.org/))
 
--   **[StoryBook](https://storybook.js.org/)**
--   **[React Icons](https://react-icons.github.io/react-icons/)**
--   **[Styled Components](https://github.com/styled-components/styled-components)**
--   **[Jest](https://jestjs.io/pt-BR/)**
--   **[Testing Library](https://testing-library.com/docs/react-testing-library/intro/)**
--   **[Prettier](https://prettier.io/)**
--   **[Eslint](https://eslint.org/)**
--   **[Plop](https://plopjs.com/)**
--   **[Axios](https://github.com/axios/axios)**
--   **[React query](https://react-query.tanstack.com/)**
--   **[Mirage](https://miragejs.com/)**
+-   **[StoryBook](https://storybook.js.org/)** - Ferramenta de código aberto para a construção de componentes de interface do usuário e páginas de forma isolada.
+-   **[React Icons](https://react-icons.github.io/react-icons/)** - Biblioteca de icones.
+-   **[Styled Components](https://github.com/styled-components/styled-components)** - CSS-in-js
+-   **[Jest](https://jestjs.io/pt-BR/)** - Frameword de testes em Javascript.
+-   **[Testing Library](https://testing-library.com/docs/react-testing-library/intro/)** - Lib para testar componentes.
+-   **[Prettier](https://prettier.io/)** -  Formatador de código opinativo.
+-   **[Eslint](https://eslint.org/)** - Ferramenta para identificar e relatar os padrões encontrados no código ECMAScript / JavaScript, com o objetivo de tornar o código mais consistente e evitar bugs.
+-   **[Plop](https://plopjs.com/)** - Automatização de criação de componentes.
+-   **[Axios](https://github.com/axios/axios)** -  Cliente HTTP baseado em promessa para node.jse o navegador.
+-   **[React query](https://react-query.tanstack.com/)** - Ferramenta para data fetching.
+-   **[Mirage](https://miragejs.com/)** - Biblioteca de simulação de API.
 
 
 > Veja o arquivo  [package.json](https://github.com/odailsonsilva/eduick-next/blob/dev/package.json)
