@@ -6,21 +6,6 @@
     Desafio para desenvolvedor front-end para EduSynch
 </h3>
 
-<p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/odailsonsilvaeduick-next?color=%2304D361">
-
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/odailsonsilvaeduick-next">
-
-  <!-- <a href="https://www.twitter.com/tgmarinho/">
-    <img alt="Siga no Twitter" src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Ftgmarinho%2FREADME-ecoleta">
-  </a> -->
-
-  <a href="https://github.com/tgmarinho/README-ecoleta/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/odailsonsilvaeduick-next">
-  </a>
-
-</p>
-
 Tabela de conteúdos
 =================
 <!--ts-->
@@ -40,6 +25,7 @@ Tabela de conteúdos
 ## 💻 Sobre o projeto
 
 Desenvolvido com NextJs e Typescript. Contém uma fake api, MirageJs. Focado nas melhores práticas de programação, visando a manutenibilidade, teste e documentação.
+Usada a abordagem de Atomic Design para organização dos componentes.
 
 
 
@@ -57,7 +43,7 @@ Desenvolvido com NextJs e Typescript. Contém uma fake api, MirageJs. Focado nas
   - [x] Adicionar requisição para trazer lista de cursos (MirageJs);
   - [x] Implementar scroll infinito ou paginação;
   - [x] Na versão mobile implementar ação de dropdown (onde aparece change to teacher mode);
-- [x] Teste Unitários;
+- [x] Teste Unitários e documentação(Somente em alguns atomos);
 - [x] Html Semântico;
 - [x] CSS bem estruturado;
 - [x] Comentar o código, quando necessário, para explicar a intenção de trechos complexos;
@@ -86,13 +72,18 @@ O layout da aplicação está disponível no Figma: https://www.figma.com/file/v
 
   ### MenuBurguer
 
-  <img alt="lista de pedidos" title="#orders-list" src="./print_pages/print-2.PNG" width="350px">
+  <div align="center">
+    <img alt="lista de pedidos" title="#orders-list" src="./print_pages/print-2.PNG" width="350px">
+  </div>
 
   #
 
   ### Login/Login Social
 
-  <img alt="Detalhes de pedidos" title="#order-details" src="./print_pages/print-3.PNG" width="350px">
+  <div align="center">
+    <img alt="Detalhes de pedidos" title="#order-details" src="./print_pages/print-3.PNG" width="350px">
+  </div>
+
 
   <img alt="Detalhes de pedidos" title="#order-details" src="./print_pages/print-3.1.PNG" width="1200px">
 
@@ -107,7 +98,9 @@ O layout da aplicação está disponível no Figma: https://www.figma.com/file/v
 
   ### Dropdown
 
-  <img alt="Informações do pedido" title="#user-order" src="./print_pages/print-6.PNG" width="350px">
+  <div align="center">
+    <img alt="Informações do pedido" title="#user-order" src="./print_pages/print-6.PNG" width="350px">
+  </div>
 
   #
 
@@ -132,10 +125,7 @@ $ git clone https://github.com/odailsonsilva/eduick-next.git
 # Acesse a pasta do projeto no seu terminal/cmd
 $ cd eduick-next
 
-# Verifique se esta na branch 'dev', caso nao esteja faça o comando abaixo
-$ git pull origin dev
-
-$ git checkout dev
+# check se esta na banch master
 
 # Instalando dependências
 $ yarn
@@ -158,21 +148,23 @@ $ yarn build
 $ yarn start
 
 ## OBS: CASO QUEIRA TESTAR A PARTE DE LOGIN SOCIAL, PRECISARÁ FAZER A CONFIGURAÇÃO ABAIXO
-## CRIAR UM ARQUVIO COM NOVO .ENV.LOCAL E DENTRO COLOCAR CLIENT_ID E O SECRET
-## EXISTE UM ARQUIVO NA RAIZ DO PROJETO CHAMADO .ENV.LOCAL.EXAMPLE, USE-O COMO BASE PARA CRIAR SEU ARQUIVO
-## SECRET E CLIENT_ID É DO SEU GITHUB
+## EXISTE UM ARQUIVO NA RAIZ DO PROJETO CHAMADO ".ENV.LOCAL.EXAMPLE", USE-O COMO BASE PARA CRIAR SEU ARQUIVO
+## CRIAR UM ARQUIVO COM O NOME .ENV.LOCAL NA RAIZ DO PROJETO
+## USE AS COPIE AS CREDENCIAS DO ARQUIVO DE EXEMPLO PARA DENTRO DO ARQUIVO QUE VOCÊ CRIOU, AGORA E SO SALVAR
+
+## CASO OCORRA ALGUM ERRO, SUBSTITUA AS CREDENCIAS (CLIENT_ID E SECRET) PELAS SUAS.
 
 # A aplicação será aberta na porta:3000 - acesse http://localhost:3000
 
 ## OUTROS COMANDOS
 
-# STORYBOOK
+# STORYBOOK (EXECUTA A DOCUMENTAÇÃO DOS COMPONENTE ISOLADO, AQUI SÓ ESTÃ0 ALGUNS COMPONENTE PARA EXEMPLIFICAR A CONTRUÇÃO DOS MESMOS)
 $ yarn storybook
 
-# Testes
+# Testes  (AQUI SOMENTE ALGUNS COMPONENTE FORAM TESTADOS, OS QUE ESTÃO DENTRO DE ATOMOS)
 $ yarn test
 
-# Automatização para criação de componentes
+# Automatização para criação de componentes, (CRIA UMA ESTRUTURA COM - index.tsx, styles.ts, stories.tsx e tests.ts)
 $ yarn generate [nome]
 
 ```

@@ -27,6 +27,10 @@ export const WrapperImage = styled.div`
   height: 123px;
   position: relative;
 
+  img {
+    border-radius: 4px 4px 0 0;
+  }
+
   background: #f6f7f8;
   background-image: linear-gradient(
     to right,
