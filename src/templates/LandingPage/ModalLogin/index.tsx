@@ -77,6 +77,7 @@ export const ModalLogin = ({ isOpen, onRequestClose }: Props) => {
           <div className="form__input">
             <Input
               label="Username:"
+              placeholder="user@eduick.com"
               errors={formState.errors?.email?.message || errors.email}
               {...register('email')}
             />
@@ -85,6 +86,7 @@ export const ModalLogin = ({ isOpen, onRequestClose }: Props) => {
           <div className="form__input">
             <Input
               label="Password:"
+              placeholder="Teste123@"
               isPassword
               errors={formState.errors?.password?.message || errors.password}
               {...register('password')}
