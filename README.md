@@ -113,8 +113,12 @@ O layout da aplicação está disponível no Figma: https://www.figma.com/file/v
 ---
 
 ## 🚀 Como executar o projeto
+```bash
+##ATENÇÃO PARA LOGAR COM EMAIL
+EMAIL: user@eduick.com
+SENHA: Teste123@
 
-
+```
 #### 🧭 Rodando a aplicação
 
 ```bash
