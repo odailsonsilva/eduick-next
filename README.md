@@ -22,10 +22,10 @@ Tabela de conteúdos
 <!--te-->
 
 
-## 💻 Sobre o projeto
+## 💻 Análise sobre o desenvolvimento do projeto
 
 Desenvolvido com NextJs e Typescript. Contém uma fake api, MirageJs. Focado nas melhores práticas de programação, visando a manutenibilidade, teste e documentação.
-Usada a abordagem de Atomic Design para organização dos componentes.
+Usada a arquitetura e padrão de projeto Atomic Designer, para os componentes.
 
 
 
@@ -184,7 +184,7 @@ Principais dependências usadas no projeto:
 -   **[StoryBook](https://storybook.js.org/)** - Ferramenta de código aberto para a construção de componentes de interface do usuário e páginas de forma isolada.
 -   **[React Icons](https://react-icons.github.io/react-icons/)** - Biblioteca de icones.
 -   **[Styled Components](https://github.com/styled-components/styled-components)** - CSS-in-js
--   **[Jest](https://jestjs.io/pt-BR/)** - Frameword de testes em Javascript.
+-   **[Jest](https://jestjs.io/pt-BR/)** - Framework para testes em Javascript.
 -   **[Testing Library](https://testing-library.com/docs/react-testing-library/intro/)** - Lib para testar componentes.
 -   **[Prettier](https://prettier.io/)** -  Formatador de código opinativo.
 -   **[Eslint](https://eslint.org/)** - Ferramenta para identificar e relatar os padrões encontrados no código ECMAScript / JavaScript, com o objetivo de tornar o código mais consistente e evitar bugs.
