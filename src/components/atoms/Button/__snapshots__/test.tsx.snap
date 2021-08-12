@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> shold render button clicks 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-height: 4.8rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.4rem;
+  padding: 1.4rem 4.4rem;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  background: #FFD74F;
+  color: #6f48ec;
+}
+
+.c0:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.c0:hover {
+  -webkit-filter: brightness(0.9);
+  filter: brightness(0.9);
+}
+
+.c0:active {
+  -webkit-filter: brightness(1);
+  filter: brightness(1);
+}
+
+<button
+  class="c0"
+>
+  Button
+</button>
+`;
