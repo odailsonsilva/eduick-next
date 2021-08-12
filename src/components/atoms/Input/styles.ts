@@ -69,7 +69,7 @@ type InputStyledProps = {
   error: boolean
 }
 
-export const Wrapper = styled.main<InputStyledProps>`
+export const Wrapper = styled.div<InputStyledProps>`
   ${({ error }) => css`
     ${error &&
     css`

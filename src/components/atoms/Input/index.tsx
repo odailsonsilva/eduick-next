@@ -13,7 +13,10 @@ export type InputProps = {
 } & React.InputHTMLAttributes<HTMLInputElement>
 
 const InputBase: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> =
-  ({ label, type = 'text', isPassword = false, errors = '', ...rest }, ref) => {
+  (
+    { label = '', type = 'text', isPassword = false, errors = '', ...rest },
+    ref
+  ) => {
     const [value, setValue] = React.useState('')
 
     const [typeState, setTypeState] = React.useState(type)
@@ -34,11 +37,20 @@ const InputBase: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> =
 
     return (
       <S.Wrapper error={!!errors}>
-        {!!label && <S.Label>{label}</S.Label>}
+        {!!label && <S.Label htmlFor={rest.name}>{label}</S.Label>}
         <S.WrapperInput>
-          <S.InputStyled type={typeState} ref={ref} {...rest} />
+          <S.InputStyled
+            type={typeState}
+            ref={ref}
+            {...rest}
+            {...(label ? { id: rest.name } : {})}
+          />
           {isPassword && (
-            <div className="wrapper__input__icon" onClick={handleChangeType}>
+            <div
+              className="wrapper__input__icon"
+              onClick={handleChangeType}
+              data-testid="button--password"
+            >
               {typeState === 'password' ? (
                 <FiEye size="24px" color="#A68EEF" />
               ) : (
