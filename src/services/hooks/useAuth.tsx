@@ -52,12 +52,20 @@ export function AuthProvider({ children }: Props) {
     }
   }
 
+  /**
+   * LOGICA PARA LOGIN (MOCKADO) COM EMAIL
+   */
+
   async function signIn({ email, password }: SignInCredentials) {
     setIsLoading(true)
     setErrors({
       email: '',
       password: ''
     })
+
+    /**
+     * SIMULA UM TIMING DE REQUEST
+     */
 
     await new Promise((resolve) => setTimeout(resolve, 2000))
 
@@ -68,6 +76,19 @@ export function AuthProvider({ children }: Props) {
         maxAge: 60 * 60 * 24 * 30, // 30 days
         path: '/'
       })
+
+      toast('Login successfully ', {
+        position: 'top-center',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        type: 'success'
+      })
+
+      /**
+       * COMO AS INFORMAÇOES ESTAO MOCKA, ESTE SETTIMEOUT SERVE PARA EVITAR
+       * POSSIVEIS ERROS DURANTE A ANALISE DOS COOKIES
+       */
 
       setTimeout(() => {
         const { 'eduick.token': tokenS } = parseCookies()
@@ -98,15 +119,19 @@ export function AuthProvider({ children }: Props) {
       destroyCookie(undefined, 'eduick.token')
       setUsers({} as any)
 
+      toast('Logout successfully ', {
+        position: 'top-center',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        type: 'success'
+      })
+
       setTimeout(() => {
         router.push('/')
       }, 1000)
     }
   }
-
-  /**
-   * VERIFICA SE EXISTE SESSION (COOKIES) COM LOGIN SOCIAL
-   */
 
   return (
     <AuthContext.Provider

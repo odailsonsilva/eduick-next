@@ -8,6 +8,7 @@ import * as S from './styles'
 import { Course, useCourses } from 'services/hooks/useCourses'
 import { Loading } from 'components/atoms/Loading'
 import Image from 'next/image'
+import Head from 'next/head'
 
 const linksHeader = [{ title: 'My Classes', href: '/' }]
 
@@ -49,80 +50,83 @@ export const Dashboard = () => {
   }, [isLoading, data])
 
   return (
-    <S.Wrapper>
-      <HeaderAuth
-        onClick={() => console.log('click')}
-        links={linksHeader}
-        buttonText="Change to teacher mode"
-        themeButton="secondary"
-        openChange={(val: boolean) => setOpen(val)}
-      />
+    <>
+      <Head>Eduick | Dashboard</Head>
+      <S.Wrapper>
+        <HeaderAuth
+          onClick={() => console.log('click')}
+          links={linksHeader}
+          buttonText="Change to teacher mode"
+          themeButton="secondary"
+          openChange={(val: boolean) => setOpen(val)}
+        />
 
-      {open && <div style={{ height: 166 }} />}
+        {open && <div style={{ height: 166 }} />}
 
-      <S.Container id="area-scrolled">
-        <ContainerInfos />
+        <S.Container id="area-scrolled">
+          <ContainerInfos />
 
-        <>
-          {!isLoading && (courses.length === 0 || error) && (
-            <S.ContainerNotData>
-              <Image
-                src="/illustrations/not-found.svg"
-                alt="Not found image"
-                layout="fill"
-                objectFit="cover"
-              />
-              <h2>No courses found</h2>
-            </S.ContainerNotData>
-          )}
-        </>
+          <>
+            {!isLoading && (courses.length === 0 || error) && (
+              <S.ContainerNotData>
+                <Image
+                  src="/illustrations/not-found.svg"
+                  alt="Not found image"
+                  layout="fill"
+                  objectFit="cover"
+                />
+                <h2>No courses found</h2>
+              </S.ContainerNotData>
+            )}
+          </>
 
-        <S.Grid>
-          {courses.map((item, index) => {
-            if (courses.length === index + 1) {
-              /**
-               * CASO SEJA ULTIMO ELEMENTO CRIA UMA DIV COM A REF(LASTELEMENT) DENTRO DO GRID
-               */
+          <S.Grid>
+            {courses.map((item, index) => {
+              if (courses.length === index + 1) {
+                /**
+                 * CASO SEJA ULTIMO ELEMENTO CRIA UMA DIV COM A REF(LASTELEMENT) DENTRO DO GRID
+                 */
 
-              return (
-                <>
+                return (
+                  <>
+                    <Card
+                      key={index}
+                      {...item}
+                      lessionsTotal={item['lessions_total']}
+                    />
+                    <div ref={lastElementRef} />
+                  </>
+                )
+              } else {
+                return (
                   <Card
                     key={index}
                     {...item}
                     lessionsTotal={item['lessions_total']}
                   />
-                  <div ref={lastElementRef} />
-                </>
-              )
-            } else {
-              return (
-                <Card
-                  key={index}
-                  {...item}
-                  lessionsTotal={item['lessions_total']}
-                />
-              )
-            }
-          })}
-        </S.Grid>
+                )
+              }
+            })}
+          </S.Grid>
 
-        {isLoading && (
-          <S.ContainerLoading>
-            <Loading />
-          </S.ContainerLoading>
-        )}
-      </S.Container>
+          {isLoading && (
+            <S.ContainerLoading>
+              <Loading />
+            </S.ContainerLoading>
+          )}
+        </S.Container>
 
-      <S.Footer>
-        <div className="footer__content">
-          <p>
-            Copyright © 2020 <span>Eduick.</span>
-          </p>
-          <p className="footer__content__copyright">
-            Todos os direitos reservados.
-          </p>
-        </div>
-      </S.Footer>
-    </S.Wrapper>
+        <S.Footer>
+          <div className="footer__content">
+            <p>
+              Copyright © 2020 <span>Eduick.</span>
+            </p>
+            <p className="footer__content__copyright">
+              Todos os direitos reservados.
+            </p>
+          </div>
+        </S.Footer>
+      </S.Wrapper>
+    </>
   )
 }

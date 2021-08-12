@@ -15,6 +15,10 @@ type GetUsersResponse = {
   courses: Course[]
 }
 
+/**
+ * CHAMA PARA API DO MIRAGE E FORMATACAO DOS DADOS
+ */
+
 export async function getCourses(page: number): Promise<GetUsersResponse> {
   const { data, headers } = await api.get('courses', {
     params: {
@@ -40,6 +44,10 @@ export async function getCourses(page: number): Promise<GetUsersResponse> {
     courses
   }
 }
+
+/**
+ * Data Fetching com React Query
+ */
 
 export function useCourses(page: number) {
   return useQuery(['courses', page], () => getCourses(page), {

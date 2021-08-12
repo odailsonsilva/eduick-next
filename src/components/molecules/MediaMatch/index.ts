@@ -1,6 +1,12 @@
 import styled, { css } from 'styled-components'
 import media, { DefaultBreakpoints, generateMedia } from 'styled-media-query'
 
+/**
+ * ESTE COMPONENTE É UM VALIDADOR PARA RESOLUÇÕES, SEMELHANTE AS MEDIA QUERYS
+ * LESSTHAN = MENOR QUE (SE MENOR QUE X, ENTÃO O QUE ESTIVER DENTRO DA DIV MOSTRA)
+ * GREATERTHAN = MAIOR QUE (SE MAIOR QUE X, ENTÃO O QUE ESTIVER DENTRO DA DIV MOSTRA)
+ */
+
 type breakpoint = keyof DefaultBreakpoints
 
 const breakPoints = generateMedia({

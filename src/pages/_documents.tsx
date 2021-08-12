@@ -11,7 +11,9 @@ export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
-
+    /**
+     * CONFIGURAÇÃO PARA SSR DO STYLED-COMPONENT
+     */
     try {
       ctx.renderPage = () =>
         originalRenderPage({
