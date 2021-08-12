@@ -6,12 +6,12 @@ import { Logo } from '.'
 describe('<Logo />', () => {
   it('shold render defaul logo', () => {
     renderWithTheme(<Logo />)
-    expect(screen.getByLabelText('logo')).toBeInTheDocument()
+    expect(screen.getByLabelText('logo').parentElement).toBeInTheDocument()
     // expect(container.firstChild).toMatchSnapshot()
   }),
     it('shold render defaul logo with detail', () => {
       const { container } = renderWithTheme(<Logo activedDetails />)
-      expect(screen.getByLabelText('logo')).toBeInTheDocument()
+      expect(screen.getByLabelText('logo').parentElement).toBeInTheDocument()
       expect(screen.getByLabelText('detailLogo')).toBeInTheDocument()
       expect(container.firstChild).toMatchSnapshot()
     })
