@@ -107,7 +107,8 @@ export function AuthProvider({ children }: Props) {
         email: 'Check your email',
         password: 'Check your password'
       })
-    }asd
+    }
+    // asdklaskldsa
 
     setIsLoading(false)
   }
